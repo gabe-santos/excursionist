@@ -1,0 +1,49 @@
+:root {
+	--black: #202426;
+	--grey: #8697a2;
+	--light-grey: #e2e6e9;
+	--white: #ffffff;
+}
+
+* {
+	margin: 0 auto;
+}
+
+body {
+	padding: 16px;
+	font-family: Inter;
+	background-color: var(--light-grey);
+}
+
+.app {
+	padding-top: 50px; /*probably adjust this later*/
+	display: flex;
+}
+
+h1 {
+	font-weight: 500;
+}
+
+.itinerary-list > h2 {
+	font-weight: 400;
+}
+
+.itinerary-list {
+	text-align: center;
+	color: var(--black);
+	font-weight: light;
+	padding: 12px 12px;
+	width: 320px;
+	/* background-color: var(--white); */
+}
+
+.itinerary-display {
+	background-color: var(--white);
+	color: var(--black);
+	border-radius: 12px;
+	/* width: 976px; */
+	flex-grow: 1;
+	max-width: 976px;
+	padding: 12px 12px;
+	margin-right: 320px;
+}
