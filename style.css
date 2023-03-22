@@ -1,76 +1,94 @@
 :root {
-	--black: #202426;
-	--grey: #8697a2;
-	--light-grey: #e2e6e9;
-	--white: #ffffff;
+  --black: #202426;
+  --grey: #8697a2;
+  --light-grey: #e2e6e9;
+  --white: #ffffff;
 }
 
 * {
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
 body {
-	padding: 16px;
-	font-family: Inter;
-	background-color: var(--light-grey);
+  padding: 16px;
+  font-family: Inter;
+  background-color: var(--light-grey);
 }
 
 .app {
-	padding-top: 50px; /*probably adjust this later*/
-	display: flex;
+  padding-top: 50px; /*probably adjust this later*/
+  display: flex;
 }
 
 .event-title {
-	font-weight: 500;
-	font-size: 48px;
+  font-weight: 500;
+  font-size: 48px;
 }
 
 .itinerary-list-container > h2 {
-	font-weight: 400;
+  font-weight: 400;
 }
 
 .itinerary-list-container {
-	text-align: center;
-	color: var(--black);
-	font-weight: light;
-	padding: 12px 12px;
-	width: 320px;
-	/* background-color: var(--white); */
+  text-align: center;
+  color: var(--black);
+  font-weight: light;
+  padding: 20px 20px;
+  width: 320px;
+  /* background-color: var(--white); */
 }
 
 #itinerary-list {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 .itinerary-display {
-	background-color: var(--white);
-	color: var(--black);
-	border-radius: 12px;
-	flex-grow: 1;
-	max-width: 976px;
-	padding: 12px 12px;
-	margin-right: 24%;
-	display: flex;
-	justify-content: space-between;
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 12px;
+  flex-grow: 1;
+  max-width: 976px;
+  padding: 20px 20px;
+  margin-right: 24%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .event-details-wrapper {
-	flex: 1;
+  flex: 1;
+  width: 50vw;
 }
 
 .event-details-wrapper > p {
-	margin: 12px 0px;
+  margin: 16px 8px;
 }
 
 .event-calendar {
-	border-radius: 12px;
-	width: 500px;
-	height: 333px;
-	border: 2px solid var(--light-grey);
-	background-color: var(--white);
-	margin: 4px;
-	/* text-align: center; */
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  border-radius: 12px;
+  max-width: 500px;
+  max-height: 333px;
+  flex: 1;
+  /* width: 50%;
+  height: 70%; */
+  border: 2px solid var(--light-grey);
+  background-color: var(--white);
+  margin: 8px;
+  /* text-align: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 900px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .itinerary-display {
+    flex-direction: column;
+  }
+
+  .event-calendar {
+    height: 1000px;
+  }
 }
