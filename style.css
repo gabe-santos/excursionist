@@ -25,17 +25,21 @@ body {
 	font-size: 48px;
 }
 
-.itinerary-list > h2 {
+.itinerary-list-container > h2 {
 	font-weight: 400;
 }
 
-.itinerary-list {
+.itinerary-list-container {
 	text-align: center;
 	color: var(--black);
 	font-weight: light;
 	padding: 12px 12px;
 	width: 320px;
 	/* background-color: var(--white); */
+}
+
+#itinerary-list {
+	list-style-type: none;
 }
 
 .itinerary-display {
@@ -52,6 +56,10 @@ body {
 
 .event-details-wrapper {
 	flex: 1;
+}
+
+.event-details-wrapper > p {
+	margin: 12px 0px;
 }
 
 .event-calendar {
