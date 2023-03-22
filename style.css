@@ -3,6 +3,7 @@
   --grey: #8697a2;
   --light-grey: #e2e6e9;
   --white: #ffffff;
+  --purple: #4e46b4;
 }
 
 * {
@@ -13,6 +14,27 @@ body {
   padding: 16px;
   font-family: Inter;
   background-color: var(--light-grey);
+}
+
+#navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* padding: 0px 24px; */
+}
+
+#spacer {
+  visibility: hidden;
+  flex-grow: 1;
+}
+
+#account-nav {
+  width: fit-content;
+}
+
+.logo {
+  color: var(--purple);
+  width: fit-content;
 }
 
 .app {
