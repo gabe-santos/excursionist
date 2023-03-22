@@ -20,8 +20,9 @@ body {
 	display: flex;
 }
 
-h1 {
+.event-title {
 	font-weight: 500;
+	font-size: 48px;
 }
 
 .itinerary-list > h2 {
@@ -41,9 +42,27 @@ h1 {
 	background-color: var(--white);
 	color: var(--black);
 	border-radius: 12px;
-	/* width: 976px; */
 	flex-grow: 1;
 	max-width: 976px;
 	padding: 12px 12px;
-	margin-right: 320px;
+	margin-right: 24%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.event-details-wrapper {
+	flex: 1;
+}
+
+.event-calendar {
+	border-radius: 12px;
+	width: 500px;
+	height: 333px;
+	border: 2px solid var(--light-grey);
+	background-color: var(--white);
+	margin: 4px;
+	/* text-align: center; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
