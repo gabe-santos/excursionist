@@ -1,4 +1,8 @@
 const itineraryList = document.querySelector('#itinerary-list');
+const formModal = document.querySelector('.modal');
+const newItineraryBtn = document.querySelector('#new-itinerary-btn');
+const formModalClose = document.querySelector('.close');
+
 let itineraryListData = [];
 
 const sampleData = {
@@ -10,6 +14,20 @@ const sampleData = {
 };
 
 itineraryListData.push(sampleData);
+
+// Form Modal Code
+newItineraryBtn.onclick = () => {
+  formModal.style.display = 'block';
+};
+
+formModalClose.onclick = () => {
+  formModal.style.display = 'none';
+  // TODO: clear input when form cancelled
+};
+
+window.onclick = (e) => {
+  if (e.target == formModal) formModal.style.display = 'none';
+};
 
 function loadEventDisplay() {
   document.querySelector('.event-title').textContent = sampleData.title;
