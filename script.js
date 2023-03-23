@@ -1,17 +1,20 @@
-// Component selectors
+// Itinerary List selectors
 const itineraryList = document.querySelector('#itinerary-list');
-const formModal = document.querySelector('.modal');
 const newItineraryBtn = document.querySelector('#new-itinerary-btn');
-const formModalClose = document.querySelector('.close');
-const formModalSubmit = document.querySelector('#form-submit');
+
+// Itinerary Display selectors
 const eventTitle = document.querySelector('#event-title');
 const eventDate = document.querySelector('#event-date');
 
 // Form data selectors
+const formModal = document.querySelector('.modal');
+const formModalSubmit = document.querySelector('#form-submit');
+const formModalClose = document.querySelector('.close');
 const formEventTitle = document.querySelector('#form-title');
 const formEventDate = document.querySelector('#form-date');
 const formEventDescription = document.querySelector('#form-description');
 
+// Itinerary Object
 class Itinerary {
   constructor(title, date, activityCount, description) {
     this.title = title;
@@ -23,6 +26,7 @@ class Itinerary {
 
 let itineraryListData = []; // List of all Itinerary Objects
 
+// Sample data (to be deleted)
 const sampleData = {
   title: 'Lunch Date w/ Benildo',
   date: new Date().toLocaleDateString(),
@@ -34,19 +38,23 @@ const sampleData = {
 itineraryListData.push(sampleData);
 
 // Form Modal Code
+// Displays popup form when '+ New Itinerary' clicked
 newItineraryBtn.onclick = () => {
   formModal.style.display = 'block';
 };
 
+// Closes form popup when close btn pressed
 formModalClose.onclick = () => {
   formModal.style.display = 'none';
   // TODO: clear input when form cancelled
 };
 
+// Closes form popup when area outside of form window is pressed
 window.onclick = (e) => {
   if (e.target == formModal) formModal.style.display = 'none';
 };
 
+// Loads data to be displayed in main itinerary display
 const loadEventDisplay = () => {
   eventTitle.textContent = sampleData.title;
   document.querySelector('.event-date').textContent =
@@ -55,6 +63,7 @@ const loadEventDisplay = () => {
     'Activities: ' + sampleData.activityCount;
 };
 
+// Loads itinerary titles to be displayed on the Itinerary list display
 const loadItineraryList = () => {
   itineraryListData.forEach((item) => {
     let newItem = document.createElement('li');
@@ -70,8 +79,9 @@ const loadItineraryList = () => {
   itineraryList.append(newItinerary);
 };
 
+// Handles form submission
 formModalSubmit.onclick = () => {
-  // Get data from form
+  // Print data
   console.log(formEventTitle.value);
   console.log(formEventDate.value);
 
@@ -88,5 +98,6 @@ formModalSubmit.onclick = () => {
   // formModal.style.display = 'none';
 };
 
+// Function calls
 loadItineraryList();
 loadEventDisplay();
