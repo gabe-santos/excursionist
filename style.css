@@ -234,3 +234,14 @@ body {
     max-width: 1000px;
   }
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: var(--grey);
+  text-align: center;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
