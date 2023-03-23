@@ -4,6 +4,8 @@
   --light-grey: #e2e6e9;
   --white: #ffffff;
   --purple: #4e46b4;
+
+  --border-radius: 20px;
 }
 
 * {
@@ -54,12 +56,32 @@ body {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
+  border-radius: var(--border-radius);
   width: 80%;
 }
 
 .close {
   float: right;
   font-size: 28px;
+}
+
+.form-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.submit-btn {
+  background-color: var(--purple);
+  color: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 12px;
+  font-size: 20px;
+  padding: 8px;
+}
+
+.submit-btn:hover {
+  background-image: linear-gradient(rgb(0 0 0/10%) 0 0);
 }
 
 .app {
@@ -89,13 +111,23 @@ body {
   list-style-type: none;
 }
 
+#new-itinerary-btn {
+  border: none;
+  background-color: var(--gray);
+  color: var(--grey);
+}
+
+#new-itinerary-btn:hover {
+  color: var(--black);
+}
+
 .itinerary-display {
   background-color: var(--white);
   color: var(--black);
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   flex-grow: 1;
   max-width: 976px;
-  padding: 20px 20px;
+  padding: 24px 24px;
   margin-right: 24%;
   display: flex;
   justify-content: space-between;
@@ -107,11 +139,11 @@ body {
 }
 
 .event-details-wrapper > p {
-  margin: 16px 8px;
+  margin: 20px 12px;
 }
 
 .event-calendar {
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   max-width: 500px;
   max-height: 333px;
   flex: 1;

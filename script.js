@@ -2,6 +2,12 @@ const itineraryList = document.querySelector('#itinerary-list');
 const formModal = document.querySelector('.modal');
 const newItineraryBtn = document.querySelector('#new-itinerary-btn');
 const formModalClose = document.querySelector('.close');
+const formModalSubmit = document.querySelector('#form-submit');
+
+// Form data selectors
+const eventTitle = document.querySelector('#form-title');
+const eventDate = document.querySelector('#form-date');
+const eventDescription = document.querySelector('#form-description');
 
 let itineraryListData = [];
 
@@ -50,9 +56,16 @@ function loadItineraryList() {
   itineraryList.append(newItinerary);
 }
 
-function createNewItinerary() {
-  console.log('working...');
-}
+// function createNewItinerary() {
+//   console.log('working...');
+// }
+
+formModalSubmit.onclick = () => {
+  formModal.style.display = 'none';
+
+  // Get data from form
+  console.log(eventTitle.value);
+};
 
 loadItineraryList();
 loadEventDisplay();

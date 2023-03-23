@@ -27,9 +27,7 @@
     <div class="app">
       <div class="itinerary-list-container">
         <h2>Itineraries</h2>
-        <ul id="itinerary-list">
-          <li>Coffee w/ Hasbullah</li>
-        </ul>
+        <ul id="itinerary-list"></ul>
 
         <button onclick="createNewItinerary()" id="new-itinerary-btn">
           + New Itinerary
@@ -40,9 +38,28 @@
       <div class="modal">
         <div class="modal-form">
           <span class="close">&times;</span>
-          <form action="">
-            <label for="title">Title</label>
-            <input type="text" name="title" id="" />
+          <form action="#">
+            <h1>New Itinerary</h1>
+
+            <div class="form-content">
+              <label for="title">Title</label>
+              <input type="text" name="title" id="form-title" required />
+
+              <label for="date">Date</label>
+              <input type="date" name="date" id="form-date" />
+
+              <label for="description">Description</label>
+              <textarea
+                name="description"
+                id="form-description"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="form-submit">
+              Add
+            </button>
           </form>
         </div>
       </div>
@@ -52,15 +69,7 @@
           <h1 class="event-title">Title</h1>
           <p class="event-date">Date:</p>
           <p class="event-activity-count">Activities:</p>
-          <p class="event-description">
-            Description: Our coffee date will start at 10am at the local coffee
-            shop. We will enjoy a warm cup of coffee while discussing our
-            interests and hobbies. We plan on spending an hour getting to know
-            each other better. Afterwards, we will explore the local farmer's
-            market and try some delicious pastries. Finally, we will end the
-            date with a walk in the park and take in the beautiful scenery. It
-            will be a relaxing and enjoyable morning spent together.
-          </p>
+          <p class="event-description">Description:</p>
         </div>
 
         <div class="event-calendar">
