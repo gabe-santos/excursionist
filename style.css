@@ -69,8 +69,23 @@ body {
 
 .form-content {
   display: flex;
-  width: 100%;
+  width: 50vw;
   flex-direction: column;
+}
+
+.form-content > input {
+  margin-bottom: 12px;
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  padding: 8px 8px;
+  font-size: 16px;
+}
+
+.form-content > textarea {
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  padding: 8px 8px;
+  font-size: 16px;
 }
 
 .submit-btn {
