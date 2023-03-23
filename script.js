@@ -14,7 +14,7 @@ const formEventTitle = document.querySelector('#form-title');
 const formEventDate = document.querySelector('#form-date');
 const formEventDescription = document.querySelector('#form-description');
 
-// Itinerary Object
+// Itinerary Object (might not use this...)
 class Itinerary {
   constructor(title, date, activityCount, description) {
     this.title = title;
