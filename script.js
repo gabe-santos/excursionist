@@ -31,7 +31,8 @@ const sampleData = {
   title: 'Lunch Date w/ Benildo',
   date: new Date().toLocaleDateString(),
   activityCount: 2,
-  description: 'getting korean bbq, playing overwatch 2',
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed vehicula tempor velit, eu bibendum arcu venenatis eget. Vestibulum facilisis sed augue vel mattis. Ut euismod semper turpis, vel bibendum ipsum scelerisque eu. Etiam vel nibh euismod, semper nunc vel, scelerisque purus. Ut ac semper mauris. Phasellus ullamcorper elit id elit interdum, vel euismod purus mattis. Sed luctus sapien quis ante faucibus, ut vestibulum nisl interdum. Sed lacinia tortor vel velit commodo lacinia.',
   details: '',
 };
 
@@ -57,10 +58,11 @@ window.onclick = (e) => {
 // Loads data to be displayed in main itinerary display
 const loadEventDisplay = () => {
   eventTitle.textContent = sampleData.title;
-  document.querySelector('.event-date').textContent =
-    'Date: ' + sampleData.date;
+  document.querySelector('.event-date').textContent = sampleData.date;
   document.querySelector('.event-activity-count').textContent =
-    'Activities: ' + sampleData.activityCount;
+    sampleData.activityCount + ' activities';
+  document.querySelector('.event-description').textContent =
+    sampleData.description;
 };
 
 // Loads itinerary titles to be displayed on the Itinerary list display
