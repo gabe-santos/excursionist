@@ -34,15 +34,17 @@ newItineraryBtn.onclick = () => {
 	formModal.style.display = 'block';
 };
 
-// Closes form popup when close btn pressed
-formModalClose.onclick = () => {
+const closeModal = () => {
+	clearForm();
 	formModal.style.display = 'none';
-	// TODO: clear input when form cancelled
 };
+
+// Closes form popup when close btn pressed
+formModalClose.onclick = closeModal;
 
 // Closes form popup when area outside of form window is pressed
 window.onclick = e => {
-	if (e.target == formModal) formModal.style.display = 'none';
+	if (e.target == formModal) closeModal();
 };
 
 // Loads data to be displayed in main itinerary display
@@ -52,7 +54,7 @@ const createNewItinerary = () => {
 	document.dispatchEvent(e);
 };
 
-function updateUI(itineraryListData) {
+const updateUI = itineraryListData => {
 	// Update the itinerary list
 	itineraryList.innerHTML = '';
 
@@ -74,7 +76,7 @@ function updateUI(itineraryListData) {
 	eventActivityCount.textContent =
 		latestItinerary.activityCount + ' activities';
 	eventDescription.textContent = latestItinerary.description;
-}
+};
 
 document.addEventListener('createNewItinerary', () => {
 	const newEntry = new Itinerary(
@@ -88,6 +90,13 @@ document.addEventListener('createNewItinerary', () => {
 	// Update the UI to display the newly created Itinerary
 	updateUI(itineraryListData);
 });
+
+const clearForm = () => {
+	formEventTitle.value = '';
+	formEventDate.value = '';
+	formActivityCount.value = '';
+	formEventDescription.value = '';
+};
 
 // Handles form submission
 formModalSubmit.onclick = e => {
