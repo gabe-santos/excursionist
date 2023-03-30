@@ -2,6 +2,7 @@
 :root {
 	--black: #202426;
 	--grey: #8697a2;
+	--dark-grey: rgb(32, 36, 38, 0.8);
 	--light-grey: #e2e6e9;
 	--lighter-grey: #f5f5f5;
 	--white: #ffffff;
@@ -137,6 +138,19 @@ body {
 	flex-wrap: nowrap;
 }
 
+.itinerary-list-item {
+	outline: none;
+	border: none;
+	background-color: inherit;
+	width: fit-content;
+	font-size: inherit;
+}
+
+.itinerary-list-item:hover {
+	cursor: pointer;
+	color: var(--dark-grey);
+}
+
 #new-itinerary-btn {
 	border: none;
 	background-color: var(--gray);
@@ -145,6 +159,7 @@ body {
 
 #new-itinerary-btn:hover {
 	color: var(--black);
+	cursor: pointer;
 }
 /* END OF ITINERARY LIST SIDEBAR */
 

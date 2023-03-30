@@ -70,7 +70,10 @@ function updateUI(itineraryListData) {
 	// Update Itinerary list sidebar
 	itineraryListData.forEach(itinerary => {
 		const itineraryItem = document.createElement('li');
-		itineraryItem.textContent = itinerary.title;
+		itineraryItem.innerHTML =
+			'<button class="itinerary-list-item">' +
+			itinerary.title +
+			'</button>';
 		itineraryList.appendChild(itineraryItem);
 	});
 
