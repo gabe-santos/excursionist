@@ -17,11 +17,11 @@ const formEventDate = document.querySelector('#form-date');
 const formActivityCount = document.querySelector('#form-activity-count');
 const formEventDescription = document.querySelector('#form-description');
 
-// Itinerary Object (might not use this...)
+// Itinerary Object
 class Itinerary {
 	constructor(title, date, activityCount = 0, description) {
 		this.title = title;
-		this.date = date;
+		this.date = new Date(date);
 		this.activityCount = activityCount;
 		this.description = description;
 	}
@@ -57,41 +57,6 @@ window.onclick = e => {
 };
 
 // Loads data to be displayed in main itinerary display
-const loadEventDisplay = () => {
-	eventTitle.textContent = sampleData.title;
-	document.querySelector('.event-date').textContent = sampleData.date;
-	document.querySelector('.event-activity-count').textContent =
-		sampleData.activityCount + ' activities';
-	document.querySelector('.event-description').textContent =
-		sampleData.description;
-
-	// displays new itinerary
-	const latestItinerary = itineraryListData[itineraryListData.length - 1];
-
-	eventTitle.textContent = latestItinerary.title;
-	eventDate.textContent = latestItinerary.date;
-	eventActivityCount.textContent =
-		latestItinerary.activityCount + ' activities';
-	eventDescription.textContent = latestItinerary.description;
-};
-
-// Loads itinerary titles to be displayed on the Itinerary list display
-const loadItineraryList = () => {
-	itineraryList.innerHTML = '';
-
-	itineraryListData.forEach(item => {
-		let newItem = document.createElement('li');
-		newItem.textContent = item.title;
-		itineraryList.appendChild(newItem);
-	});
-
-	console.log(itineraryList);
-
-	// let newItinerary = document.createElement('li');
-	// newItinerary.textContent = sampleData.title;
-
-	// itineraryList.append(newItinerary);
-};
 
 const createNewItinerary = () => {
 	const e = new CustomEvent('createNewItinerary');
@@ -102,16 +67,18 @@ function updateUI(itineraryListData) {
 	// Update the itinerary list
 	itineraryList.innerHTML = '';
 
+	// Update Itinerary list sidebar
 	itineraryListData.forEach(itinerary => {
 		const itineraryItem = document.createElement('li');
 		itineraryItem.textContent = itinerary.title;
 		itineraryList.appendChild(itineraryItem);
 	});
 
+	// Update Itinerary Display
 	const latestItinerary = itineraryListData[itineraryListData.length - 1];
 
 	eventTitle.textContent = latestItinerary.title;
-	eventDate.textContent = latestItinerary.date;
+	eventDate.textContent = latestItinerary.date.toLocaleDateString();
 	eventActivityCount.textContent =
 		latestItinerary.activityCount + ' activities';
 	eventDescription.textContent = latestItinerary.description;
@@ -125,6 +92,7 @@ document.addEventListener('createNewItinerary', () => {
 		formEventDescription.value
 	);
 	itineraryListData.push(newEntry);
+
 	// Update the UI to display the newly created Itinerary
 	updateUI(itineraryListData);
 });
@@ -133,26 +101,9 @@ document.addEventListener('createNewItinerary', () => {
 formModalSubmit.onclick = e => {
 	e.preventDefault();
 
-	// Print data
-	console.log(formEventTitle.value);
-	console.log(formEventDate.value);
-
-	// let newEntry = new Itinerary(
-	// 	formEventTitle.value,
-	// 	formEventDate.value,
-	// 	formEventDescription.value
-	// );
-
-	// itineraryListData.push(newEntry);
-
-	// eventTitle.textContent = newEntry.title;
-
 	createNewItinerary();
-
 	formModal.style.display = 'none';
 };
 
 // Function calls
-// loadItineraryList();
-// loadEventDisplay();
 updateUI(itineraryListData);
