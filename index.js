@@ -15,6 +15,7 @@ import {
 	formEventDescription,
 } from './src/formDataSelectors';
 import { Itinerary } from './src/Itinerary'; // Itinerary Object
+import { calendarControl } from './src/calendar';
 
 let itineraryListData = []; // List of all Itinerary Objects
 
