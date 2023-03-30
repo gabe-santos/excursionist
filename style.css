@@ -26,7 +26,7 @@
 	--calendar-nextprev-bg-color: transparent;
 	--next-prev-arrow-color: #fff;
 	--calendar-border-radius: 16px;
-	--calendar-prevnext-date-color: #484848;
+	--calendar-prevnext-date-color: var(--light-grey);
 }
 
 * {
@@ -83,9 +83,13 @@ body {
 	width: 80%;
 }
 
-.close {
+.close-btn {
 	float: right;
 	font-size: 28px;
+}
+
+.close-btn:hover {
+	cursor: pointer;
 }
 
 .form-content {
@@ -241,7 +245,6 @@ body {
 	.calendar {
 		margin: 100px 0 -80px 0;
 		width: 100%;
-		max-width: 1000px;
 	}
 }
 
@@ -259,7 +262,7 @@ body {
 /* CALENDAR CSS */
 .calendar {
 	/* position: relative; */
-	max-width: 400px; /*change as per your design need */
+	max-width: 500px; /*change as per your design need */
 	min-width: 320px;
 	background-color: var(--white);
 	color: var(--calendar-font-color);
