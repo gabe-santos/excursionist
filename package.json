@@ -1,19 +1,24 @@
 {
-  "name": "only-dates",
-  "version": "1.0.0",
-  "description": "",
-  "main": "script.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gabe-santos/onlydates.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gabe-santos/onlydates/issues"
-  },
-  "homepage": "https://github.com/gabe-santos/onlydates#readme"
+	"name": "only-dates",
+	"version": "1.0.0",
+	"description": "",
+	"main": "script.js",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/gabe-santos/onlydates.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/gabe-santos/onlydates/issues"
+	},
+	"homepage": "https://github.com/gabe-santos/onlydates#readme",
+	"devDependencies": {
+		"vite": "^4.2.1"
+	}
 }
