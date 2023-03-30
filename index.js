@@ -1,31 +1,20 @@
-// Itinerary List selectors
-const itineraryList = document.querySelector('#itinerary-list');
-const newItineraryBtn = document.querySelector('#new-itinerary-btn');
-
-// Itinerary Display selectors
-const eventTitle = document.querySelector('#event-title');
-const eventDate = document.querySelector('#event-date');
-const eventActivityCount = document.querySelector('.event-activity-count');
-const eventDescription = document.querySelector('.event-description');
-
-// Form data selectors
-const formModal = document.querySelector('.modal');
-const formModalSubmit = document.querySelector('#form-submit');
-const formModalClose = document.querySelector('.close');
-const formEventTitle = document.querySelector('#form-title');
-const formEventDate = document.querySelector('#form-date');
-const formActivityCount = document.querySelector('#form-activity-count');
-const formEventDescription = document.querySelector('#form-description');
-
-// Itinerary Object
-class Itinerary {
-	constructor(title, date, activityCount = 0, description) {
-		this.title = title;
-		this.date = new Date(date);
-		this.activityCount = activityCount;
-		this.description = description;
-	}
-}
+import { itineraryList, newItineraryBtn } from './src/itineraryListSelectors'; // Itinerary List selectors
+import {
+	eventTitle,
+	eventDate,
+	eventActivityCount,
+	eventDescription,
+} from './src/itineraryDisplaySelectors'; // Itinerary Display selectors
+import {
+	formModal,
+	formModalClose,
+	formModalSubmit,
+	formEventTitle,
+	formEventDate,
+	formActivityCount,
+	formEventDescription,
+} from './src/formDataSelectors';
+import { Itinerary } from './src/Itinerary'; // Itinerary Object
 
 let itineraryListData = []; // List of all Itinerary Objects
 

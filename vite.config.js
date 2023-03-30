@@ -1,9 +1,7 @@
-module.exports = {
-	build: {
-		rollupOptions: {
-			input: {
-				main: './script.js',
-			},
-		},
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+	rollupInputOptions: {
+		input: 'index.html',
 	},
-};
+});
