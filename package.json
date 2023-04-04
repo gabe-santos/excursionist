@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/gabe-santos/onlydates#readme",
   "devDependencies": {
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "vite": "^4.2.1"
   },
   "dependencies": {
