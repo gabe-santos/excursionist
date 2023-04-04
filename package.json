@@ -32,5 +32,10 @@
     "sugarss": "^4.0.1",
     "terser": "^5.4.0",
     "vite": "^4.2.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:prettier//recommended"
+    ]
   }
 }
