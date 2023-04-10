@@ -17,17 +17,17 @@ import {
 import { Itinerary } from './src/Itinerary'; // Itinerary Object
 import { calendarControl } from './src/calendar';
 
-let itineraryListData = []; // List of all Itinerary Objects
+let itineraryListData = JSON.parse(localStorage.getItem('itineraryListData')); // List of all Itinerary Objects
 
 // Sample data (to be deleted)
-const sampleData = new Itinerary(
-  'Lunch Date w/ Benildo',
-  new Date().toLocaleDateString(),
-  2,
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed vehicula tempor velit, eu bibendum arcu venenatis eget. Vestibulum facilisis sed augue vel mattis. Ut euismod semper turpis, vel bibendum ipsum scelerisque eu. Etiam vel nibh euismod, semper nunc vel, scelerisque purus. Ut ac semper mauris. Phasellus ullamcorper elit id elit interdum, vel euismod purus mattis. Sed luctus sapien quis ante faucibus, ut vestibulum nisl interdum. Sed lacinia tortor vel velit commodo lacinia.'
-);
+//const sampleData = new Itinerary(
+//'Lunch Date w/ Benildo',
+//new Date().toLocaleDateString(),
+//2,
+//'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed vehicula tempor velit, eu bibendum arcu venenatis eget. Vestibulum facilisis sed augue vel mattis. Ut euismod semper turpis, vel bibendum ipsum scelerisque eu. Etiam vel nibh euismod, semper nunc vel, scelerisque purus. Ut ac semper mauris. Phasellus ullamcorper elit id elit interdum, vel euismod purus mattis. Sed luctus sapien quis ante faucibus, ut vestibulum nisl interdum. Sed lacinia tortor vel velit commodo lacinia.'
+//);
 
-itineraryListData.push(sampleData);
+//itineraryListData.push(sampleData);
 
 // Form Modal Code
 // Displays popup form when '+ New Itinerary' clicked
@@ -86,6 +86,8 @@ document.addEventListener('createNewItinerary', () => {
   );
   itineraryListData.push(newEntry);
 
+  localStorage.setItem('itineraryListData', JSON.stringify(itineraryListData));
+
   // Update the UI to display the newly created Itinerary
   updateUI(itineraryListData);
 });
@@ -107,3 +109,9 @@ formModalSubmit.onclick = (e) => {
 
 // Function calls
 updateUI(itineraryListData);
+
+const init = () => {
+  updateUI(storedData);
+};
+
+addEventListener('load', init); // run init on page load
