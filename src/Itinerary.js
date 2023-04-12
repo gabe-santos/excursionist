@@ -1,8 +1,14 @@
+import { generateKey } from './generateKey';
+
 export class Itinerary {
-	constructor(title, date, activityCount = 0, description) {
-		this.title = title;
-		this.date = new Date(date);
-		this.activityCount = activityCount;
-		this.description = description;
-	}
+  constructor(title, date, description) {
+    this.title = title;
+    this.key = generateKey();
+    this.date = new Date(date);
+    this.activityCount = 0;
+    this.description = description;
+  }
+  getDateString() {
+    return this.date.toLocaleDateString();
+  }
 }

@@ -17,16 +17,14 @@ import {
 import { Itinerary } from './src/Itinerary'; // Itinerary Object
 import { calendarControl } from './src/calendar';
 
+const itineraryData = {};
+
 const newUserData = new Itinerary(
   'Create a New Itinerary',
-  new Date().toLocaleDateString(),
-  1,
+  new Date(),
   "Click '+ New Itinerary' to the left to get started!"
 );
-
-let itineraryListData = localStorage.getItem('itineraryListData')
-  ? JSON.parse(localStorage.getItem('itineraryListData'))
-  : [newUserData]; // List of all Itinerary Objects
+itineraryData[newUserData.key] = newUserData;
 
 // Form Modal Code
 // Displays popup form when '+ New Itinerary' clicked
@@ -48,75 +46,73 @@ window.onclick = (e) => {
 };
 
 // Loads data to be displayed in main itinerary display
-
 const createNewItinerary = () => {
   const e = new CustomEvent('createNewItinerary');
   document.dispatchEvent(e);
 };
 
-const updateUI = (itineraryListData) => {
-  // Update the itinerary list
-  itineraryList.innerHTML = '';
+const switchItineraryDisplay = (e) => {
+  console.log(e.target.id);
+};
 
-  // Update Itinerary list sidebar
-  itineraryListData.forEach((itinerary) => {
-    const itineraryItem = document.createElement('li');
-    itineraryItem.innerHTML =
-      '<button class="itinerary-list-item">' + itinerary.title + '</button>';
-    itineraryList.appendChild(itineraryItem);
-  });
+const updateSidebar = (data) => {
+  itineraryList.innerHTML = '';
+  for (const key in data) {
+    const it = data[key];
+    const itineraryLi = document.createElement('li');
+    itineraryLi.innerHTML = `<button class="itinerary-list-item" id="${key}">${it.title}</button>`;
+    itineraryLi.addEventListener('click', switchItineraryDisplay);
+    itineraryList.appendChild(itineraryLi);
+  }
+};
+
+const updateItineraryDisplay = (itinerary) => {
+  eventTitle.textContent = itinerary.title;
+  eventDate.textContent = itinerary.date ? itinerary.date : 'No Date';
+  eventActivityCount.textContent = itinerary.activityCount + ' activities';
+  eventDescription.textContent = itinerary.description;
+};
+
+const updateUI = (itineraryData) => {
+  updateSidebar(itineraryData);
+
+  console.log(itineraryData);
 
   // Update Itinerary Display
-  const latestItinerary = itineraryListData[itineraryListData.length - 1];
+  const keys = Object.keys(itineraryData);
+  const latestItineraryKey = keys[keys.length - 1];
+  const latestItinerary = itineraryData[latestItineraryKey];
 
-  eventTitle.textContent = latestItinerary.title;
-  eventDate.textContent = latestItinerary.date.toLocaleDateString();
-  eventActivityCount.textContent =
-    latestItinerary.activityCount + ' activities';
-  eventDescription.textContent = latestItinerary.description;
+  updateItineraryDisplay(latestItinerary);
 };
 
 document.addEventListener('createNewItinerary', () => {
   const newEntry = new Itinerary(
     formEventTitle.value,
     formEventDate.value,
-    formActivityCount.value,
     formEventDescription.value
   );
-  itineraryListData.push(newEntry);
-
-  localStorage.setItem('itineraryListData', JSON.stringify(itineraryListData));
+  itineraryData[newEntry.key] = newEntry;
 
   // Update the UI to display the newly created Itinerary
-  updateUI(itineraryListData);
+  updateUI(itineraryData);
 });
 
 const clearForm = () => {
   formEventTitle.value = '';
   formEventDate.value = '';
-  formActivityCount.value = '';
   formEventDescription.value = '';
 };
 
 // Handles form submission
 formModalSubmit.onclick = (e) => {
   e.preventDefault();
-
   createNewItinerary();
   formModal.style.display = 'none';
 };
-
 // Function calls
 
-const init = () => {
-  localStorage.setItem('user', 'gabe');
-  // checks to see if localStorage is empty
-  if (localStorage.getItem('itineraryListData') === null) {
-    console.log('no data exists');
-    return;
-  }
-  updateUI(storedData);
-};
+const init = () => {};
 
-if (itineraryListData) updateUI(itineraryListData);
 addEventListener('load', init); // run init on page load
+updateUI(itineraryData);
