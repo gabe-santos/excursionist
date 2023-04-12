@@ -6,6 +6,8 @@ import {
 	eventDescription,
 } from './selectors';
 import { itineraryList } from './itineraryList';
+import { pencil } from './assets/Pencil';
+import { trash } from './assets/Trash';
 
 const switchItineraryDisplay = e => {
 	updateItineraryDisplay(itineraryList[e.target.id]);
@@ -16,8 +18,17 @@ const updateSidebar = data => {
 	for (const key in data) {
 		const it = data[key];
 		const itineraryLi = document.createElement('li');
-		itineraryLi.innerHTML = `<button class="itinerary-list-item" id="${key}">${it.title}</button>`;
-		itineraryLi.addEventListener('click', switchItineraryDisplay);
+		itineraryLi.innerHTML = `
+      <div class="itinerary-item-container">
+        <div class="itinerary-list-btns">
+          <button class="itinerary-list-item" id="${key}">${it.title}</button>
+
+          <button class="edit-btn">${pencil}</button>
+          <button class="delete-btn">${trash}</button>
+        </div>
+      </div>`;
+		const itineraryBtn = itineraryLi.querySelector('.itinerary-list-item');
+		itineraryBtn.addEventListener('click', switchItineraryDisplay);
 		itineraryUl.appendChild(itineraryLi);
 	}
 };
