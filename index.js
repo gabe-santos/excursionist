@@ -53,6 +53,7 @@ const createNewItinerary = () => {
 
 const switchItineraryDisplay = (e) => {
   console.log(e.target.id);
+  updateItineraryDisplay(itineraryData[e.target.id]);
 };
 
 const updateSidebar = (data) => {
@@ -68,7 +69,9 @@ const updateSidebar = (data) => {
 
 const updateItineraryDisplay = (itinerary) => {
   eventTitle.textContent = itinerary.title;
-  eventDate.textContent = itinerary.date ? itinerary.date : 'No Date';
+  eventDate.textContent = itinerary.date
+    ? itinerary.getDateString()
+    : 'No Date';
   eventActivityCount.textContent = itinerary.activityCount + ' activities';
   eventDescription.textContent = itinerary.description;
 };
