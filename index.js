@@ -17,17 +17,14 @@ import {
 import { Itinerary } from './src/Itinerary'; // Itinerary Object
 import { calendarControl } from './src/calendar';
 
-let itineraryListData = []; // List of all Itinerary Objects
+const itineraryData = {};
 
-// Sample data (to be deleted)
-const sampleData = new Itinerary(
-  'Lunch Date w/ Benildo',
-  new Date().toLocaleDateString(),
-  2,
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed vehicula tempor velit, eu bibendum arcu venenatis eget. Vestibulum facilisis sed augue vel mattis. Ut euismod semper turpis, vel bibendum ipsum scelerisque eu. Etiam vel nibh euismod, semper nunc vel, scelerisque purus. Ut ac semper mauris. Phasellus ullamcorper elit id elit interdum, vel euismod purus mattis. Sed luctus sapien quis ante faucibus, ut vestibulum nisl interdum. Sed lacinia tortor vel velit commodo lacinia.'
+const newUserData = new Itinerary(
+  'Create a New Itinerary',
+  new Date(),
+  "Click '+ New Itinerary' to the left to get started!"
 );
-
-itineraryListData.push(sampleData);
+itineraryData[newUserData.key] = newUserData;
 
 // Form Modal Code
 // Displays popup form when '+ New Itinerary' clicked
@@ -49,61 +46,73 @@ window.onclick = (e) => {
 };
 
 // Loads data to be displayed in main itinerary display
-
 const createNewItinerary = () => {
   const e = new CustomEvent('createNewItinerary');
   document.dispatchEvent(e);
 };
 
-const updateUI = (itineraryListData) => {
-  // Update the itinerary list
-  itineraryList.innerHTML = '';
+const switchItineraryDisplay = (e) => {
+  console.log(e.target.id);
+};
 
-  // Update Itinerary list sidebar
-  itineraryListData.forEach((itinerary) => {
-    const itineraryItem = document.createElement('li');
-    itineraryItem.innerHTML =
-      '<button class="itinerary-list-item">' + itinerary.title + '</button>';
-    itineraryList.appendChild(itineraryItem);
-  });
+const updateSidebar = (data) => {
+  itineraryList.innerHTML = '';
+  for (const key in data) {
+    const it = data[key];
+    const itineraryLi = document.createElement('li');
+    itineraryLi.innerHTML = `<button class="itinerary-list-item" id="${key}">${it.title}</button>`;
+    itineraryLi.addEventListener('click', switchItineraryDisplay);
+    itineraryList.appendChild(itineraryLi);
+  }
+};
+
+const updateItineraryDisplay = (itinerary) => {
+  eventTitle.textContent = itinerary.title;
+  eventDate.textContent = itinerary.date ? itinerary.date : 'No Date';
+  eventActivityCount.textContent = itinerary.activityCount + ' activities';
+  eventDescription.textContent = itinerary.description;
+};
+
+const updateUI = (itineraryData) => {
+  updateSidebar(itineraryData);
+
+  console.log(itineraryData);
 
   // Update Itinerary Display
-  const latestItinerary = itineraryListData[itineraryListData.length - 1];
+  const keys = Object.keys(itineraryData);
+  const latestItineraryKey = keys[keys.length - 1];
+  const latestItinerary = itineraryData[latestItineraryKey];
 
-  eventTitle.textContent = latestItinerary.title;
-  eventDate.textContent = latestItinerary.date.toLocaleDateString();
-  eventActivityCount.textContent =
-    latestItinerary.activityCount + ' activities';
-  eventDescription.textContent = latestItinerary.description;
+  updateItineraryDisplay(latestItinerary);
 };
 
 document.addEventListener('createNewItinerary', () => {
   const newEntry = new Itinerary(
     formEventTitle.value,
     formEventDate.value,
-    formActivityCount.value,
     formEventDescription.value
   );
-  itineraryListData.push(newEntry);
+  itineraryData[newEntry.key] = newEntry;
 
   // Update the UI to display the newly created Itinerary
-  updateUI(itineraryListData);
+  updateUI(itineraryData);
 });
 
 const clearForm = () => {
   formEventTitle.value = '';
   formEventDate.value = '';
-  formActivityCount.value = '';
   formEventDescription.value = '';
 };
 
 // Handles form submission
 formModalSubmit.onclick = (e) => {
   e.preventDefault();
-
   createNewItinerary();
   formModal.style.display = 'none';
 };
-
 // Function calls
-updateUI(itineraryListData);
+
+const init = () => {};
+
+addEventListener('load', init); // run init on page load
+updateUI(itineraryData);

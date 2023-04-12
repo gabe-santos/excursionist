@@ -4,7 +4,8 @@
 :root {
   --black: #202426;
   --grey: #8697a2;
-  --dark-grey: rgba(32, 36, 38, 0.8);
+  --dark-grey: hsla(210, 8.6%, 24%, 0.8);
+  --darker-grey: hsla(210, 8.6%, 3.7%, .8);
   --light-grey: #e2e6e9;
   --lighter-grey: #f5f5f5;
   --white: #ffffff;
@@ -71,16 +72,16 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: hsla(0, 0%, 100%, .5);
 }
 
 .modal-form {
   background-color: var(--white);
-  margin: 15% auto;
+  margin: 128px auto;
   padding: 24px;
-  border: 1px solid #888;
   border-radius: var(--border-radius);
-  width: 80%;
+  width: fit-content;
+  box-shadow: 0 15px 35px hsla(0, 0%, 0%, 0.2);
 }
 
 .close-btn {
@@ -94,7 +95,7 @@ body {
 
 .form-content {
   display: flex;
-  width: 50vw;
+  width:  500px;
   flex-direction: column;
 }
 
@@ -133,36 +134,48 @@ body {
 .app {
   padding-top: 64px; /*probably adjust this later*/
   display: flex;
+  justify-content: center;
 }
 
 /* ITINERARY LIST SIDEBAR */
-.itinerary-list-container > h2 {
-  font-weight: 400;
-}
 
 .itinerary-list-container {
-  text-align: center;
-  color: var(--black);
   font-weight: light;
-  padding: 24px 24px;
-  width: 384px;
-  /* background-color: var(--white); */
+  flex: 1;
+  display: flex;
+  height: 100%;
+}
+
+#itinerary-list-display {
+  color: var(--darker-grey);
+  text-align: left;
+  width: 256px;
+}
+
+#itinerary-list-title {
+  font-weight: 400;
+  font-size: 32px;
 }
 
 #itinerary-list {
+  margin-top: 16px;
   list-style-type: none;
+  padding: 0;
 }
 
 #itinerary-list > li {
-  margin-bottom: 8px;
+  margin-top: 8px;
+  /*margin-bottom: 18px;*/
   flex-wrap: nowrap;
 }
 
 .itinerary-list-item {
+  padding: 0;
   outline: none;
   border: none;
   background-color: inherit;
-  width: fit-content;
+  color: inherit;
+  /*width: fit-content;*/
   font-size: inherit;
 }
 
@@ -172,6 +185,7 @@ body {
 }
 
 #new-itinerary-btn {
+  margin-top: 8px;
   border: none;
   background-color: var(--gray);
   color: var(--grey);
@@ -184,19 +198,25 @@ body {
 /* END OF ITINERARY LIST SIDEBAR */
 
 /* ITINERARY DISPLAY */
+.itinerary-display-wrapper {
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  height: 100%;
+}
+
 .itinerary-display {
   background-color: var(--white);
   color: var(--black);
   border-radius: var(--border-radius);
-  /* flex-grow: 1; */
   width: 75vw;
-  max-width: 960px;
+  max-width: 768px;
   padding: 24px 24px;
-  margin-right: 24%;
+  /*margin-right: 24%;*/
   display: flex;
-  /* align-items: center; */
   text-align: left;
   justify-content: space-between;
+  /*margin: 0;*/
 }
 
 .event-description {
@@ -228,6 +248,10 @@ body {
 	text-align: center;
 } */
 /* END OF ITINERARY DISPLAY */
+
+#app-spacer {
+  flex: 1;
+}
 
 /* MEDIA QUERIES */
 @media (width <= 840px) {
@@ -284,7 +308,7 @@ body {
   object-fit: cover;
   margin-right: -64px;
   margin-left: 32px;
-  box-shadow: 0 60px 40px rgb(0 0 0 / 8%);
+  box-shadow: 0 15px 35px hsla(0, 0%, 0%, 0.08);
 }
 
 .calendar-inner {

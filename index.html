@@ -24,12 +24,14 @@
     <!-- App container -->
     <div class="app">
       <div class="itinerary-list-container">
-        <h2>Itineraries</h2>
+        <div id="itinerary-list-display">
+        <h2 id="itinerary-list-title">Itineraries</h2>
         <ul id="itinerary-list"></ul>
 
         <button onclick="createNewItinerary()" id="new-itinerary-btn">
           + New Itinerary
         </button>
+      </div>
       </div>
 
       <!-- New Itinerary Modal Form -->
@@ -46,8 +48,8 @@
               <label for="date">Date</label>
               <input type="date" name="date" id="form-date" />
 
-              <label for="date">Activities</label>
-              <input type="number" name="activityCount" id="form-activity-count" />
+              <!--<label for="activityCount">Activities</label>-->
+              <!--<input type="number" name="activityCount" id="form-activity-count" />-->
 
               <label for="description">Description</label>
               <textarea name="description" id="form-description" cols="30" rows="10"></textarea>
@@ -60,6 +62,7 @@
         </div>
       </div>
 
+      <div class="itinerary-display-wrapper">
       <div class="itinerary-display">
         <div class="event-details-wrapper">
           <h1 class="event-title" id="event-title">Title</h1>
@@ -73,6 +76,11 @@
       </div>
     </div>
 
+    <div id="app-spacer">
+    </div>
+    </div>
+
+    <!-- Footer -->
     <footer class="footer">
       Made with ❤️ by Benildo, Gabe, Matteo and Taya
     </footer>
