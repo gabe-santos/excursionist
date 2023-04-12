@@ -1,10 +1,4 @@
-import { itineraryList, newItineraryBtn } from './src/itineraryListSelectors'; // Itinerary List selectors
-import {
-	eventTitle,
-	eventDate,
-	eventActivityCount,
-	eventDescription,
-} from './src/itineraryDisplaySelectors'; // Itinerary Display selectors
+import { newItineraryBtn } from './src/selectors';
 import {
 	formModal,
 	formModalClose,
@@ -15,18 +9,18 @@ import {
 	formEventDescription,
 	openFormModal,
 	closeFormModal,
-} from './src/formModal.js';
+} from './src/formModal';
+import { updateUI } from './src/uiUpdates';
 import { Itinerary } from './src/Itinerary'; // Itinerary Object
 import { calendarControl } from './src/calendar';
-
-const itineraryData = {};
+import { itineraryList } from './src/itineraryList';
 
 const newUserData = new Itinerary(
 	'Create a New Itinerary',
 	new Date(),
 	"Click '+ New Itinerary' to the left to get started!"
 );
-itineraryData[newUserData.key] = newUserData;
+itineraryList[newUserData.key] = newUserData;
 
 // Form Modal Code
 // Displays popup form when '+ New Itinerary' clicked
@@ -39,43 +33,6 @@ window.onclick = e => {
 	if (e.target == formModal) closeFormModal();
 };
 
-const switchItineraryDisplay = e => {
-	updateItineraryDisplay(itineraryData[e.target.id]);
-};
-
-const updateSidebar = data => {
-	itineraryList.innerHTML = '';
-	for (const key in data) {
-		const it = data[key];
-		const itineraryLi = document.createElement('li');
-		itineraryLi.innerHTML = `<button class="itinerary-list-item" id="${key}">${it.title}</button>`;
-		itineraryLi.addEventListener('click', switchItineraryDisplay);
-		itineraryList.appendChild(itineraryLi);
-	}
-};
-
-const updateItineraryDisplay = itinerary => {
-	eventTitle.textContent = itinerary.title;
-	eventDate.textContent = itinerary.date
-		? itinerary.getDateString()
-		: 'No Date';
-	eventActivityCount.textContent = itinerary.activityCount + ' activities';
-	eventDescription.textContent = itinerary.description;
-};
-
-const updateUI = itineraryData => {
-	updateSidebar(itineraryData);
-
-	console.log(itineraryData);
-
-	// Update Itinerary Display
-	const keys = Object.keys(itineraryData);
-	const latestItineraryKey = keys[keys.length - 1];
-	const latestItinerary = itineraryData[latestItineraryKey];
-
-	updateItineraryDisplay(latestItinerary);
-};
-
 const createNewItinerary = e => {
 	e.preventDefault();
 
@@ -85,20 +42,17 @@ const createNewItinerary = e => {
 		formEventDescription.value
 	);
 
-	itineraryData[newEntry.key] = newEntry;
-	localStorage.setItem('itineraryData', JSON.stringify(itineraryData));
+	itineraryList[newEntry.key] = newEntry;
 
 	// Update the UI to display the newly created Itinerary
-	updateUI(itineraryData);
+	updateUI(itineraryList);
 
 	closeFormModal();
 };
 
 formModalSubmit.onclick = createNewItinerary;
 
-// Function calls
-
 const init = () => {};
 
 addEventListener('load', init); // run init on page load
-updateUI(itineraryData);
+updateUI(itineraryList);
