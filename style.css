@@ -63,7 +63,7 @@ body {
 
 /* NEW ITINERARY FORM */
 .modal {
-  /*display: flex;*/
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -76,9 +76,8 @@ body {
 
 .modal-form {
   background-color: var(--white);
-  margin: 96px auto;
+  margin: 128px auto;
   padding: 24px;
-  /*border: 1px solid #888;*/
   border-radius: var(--border-radius);
   width: fit-content;
   box-shadow: 0 15px 35px hsla(0, 0%, 0%, 0.2);
@@ -134,20 +133,24 @@ body {
 .app {
   padding-top: 64px; /*probably adjust this later*/
   display: flex;
+  justify-content: center;
 }
 
 /* ITINERARY LIST SIDEBAR */
-.itinerary-list-container > h2 {
+#itinerary-list-title {
   font-weight: 400;
 }
 
 .itinerary-list-container {
-  text-align: center;
+  text-align: left;
   color: var(--black);
   font-weight: light;
-  padding: 24px 24px;
-  width: 384px;
-  /* background-color: var(--white); */
+  flex: 1;
+  height: 100%;
+}
+
+#itinerary-list-display {
+  width: 192px;
 }
 
 #itinerary-list {
@@ -155,7 +158,7 @@ body {
 }
 
 #itinerary-list > li {
-  margin-bottom: 8px;
+  margin-bottom: 18px;
   flex-wrap: nowrap;
 }
 
@@ -185,19 +188,25 @@ body {
 /* END OF ITINERARY LIST SIDEBAR */
 
 /* ITINERARY DISPLAY */
+.itinerary-display-wrapper {
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  height: 100%;
+}
+
 .itinerary-display {
   background-color: var(--white);
   color: var(--black);
   border-radius: var(--border-radius);
-  /* flex-grow: 1; */
   width: 75vw;
-  max-width: 960px;
+  max-width: 768px;
   padding: 24px 24px;
-  margin-right: 24%;
+  /*margin-right: 24%;*/
   display: flex;
-  /* align-items: center; */
   text-align: left;
   justify-content: space-between;
+  /*margin: 0;*/
 }
 
 .event-description {
@@ -229,6 +238,10 @@ body {
 	text-align: center;
 } */
 /* END OF ITINERARY DISPLAY */
+
+#app-spacer {
+  flex: 1;
+}
 
 /* MEDIA QUERIES */
 @media (width <= 840px) {

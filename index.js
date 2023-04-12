@@ -17,17 +17,16 @@ import {
 import { Itinerary } from './src/Itinerary'; // Itinerary Object
 import { calendarControl } from './src/calendar';
 
-let itineraryListData = JSON.parse(localStorage.getItem('itineraryListData')); // List of all Itinerary Objects
+const newUserData = new Itinerary(
+  'Create a New Itinerary',
+  new Date().toLocaleDateString(),
+  1,
+  "Click '+ New Itinerary' to the left to get started!"
+);
 
-// Sample data (to be deleted)
-//const sampleData = new Itinerary(
-//'Lunch Date w/ Benildo',
-//new Date().toLocaleDateString(),
-//2,
-//'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed vehicula tempor velit, eu bibendum arcu venenatis eget. Vestibulum facilisis sed augue vel mattis. Ut euismod semper turpis, vel bibendum ipsum scelerisque eu. Etiam vel nibh euismod, semper nunc vel, scelerisque purus. Ut ac semper mauris. Phasellus ullamcorper elit id elit interdum, vel euismod purus mattis. Sed luctus sapien quis ante faucibus, ut vestibulum nisl interdum. Sed lacinia tortor vel velit commodo lacinia.'
-//);
-
-//itineraryListData.push(sampleData);
+let itineraryListData = localStorage.getItem('itineraryListData')
+  ? JSON.parse(localStorage.getItem('itineraryListData'))
+  : [newUserData]; // List of all Itinerary Objects
 
 // Form Modal Code
 // Displays popup form when '+ New Itinerary' clicked
@@ -108,10 +107,16 @@ formModalSubmit.onclick = (e) => {
 };
 
 // Function calls
-updateUI(itineraryListData);
 
 const init = () => {
+  localStorage.setItem('user', 'gabe');
+  // checks to see if localStorage is empty
+  if (localStorage.getItem('itineraryListData') === null) {
+    console.log('no data exists');
+    return;
+  }
   updateUI(storedData);
 };
 
+if (itineraryListData) updateUI(itineraryListData);
 addEventListener('load', init); // run init on page load

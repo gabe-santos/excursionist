@@ -24,12 +24,14 @@
     <!-- App container -->
     <div class="app">
       <div class="itinerary-list-container">
-        <h2>Itineraries</h2>
+        <div id="itinerary-list-display">
+        <h2 id="itinerary-list-title">Itineraries</h2>
         <ul id="itinerary-list"></ul>
 
         <button onclick="createNewItinerary()" id="new-itinerary-btn">
           + New Itinerary
         </button>
+      </div>
       </div>
 
       <!-- New Itinerary Modal Form -->
@@ -60,6 +62,7 @@
         </div>
       </div>
 
+      <div class="itinerary-display-wrapper">
       <div class="itinerary-display">
         <div class="event-details-wrapper">
           <h1 class="event-title" id="event-title">Title</h1>
@@ -71,6 +74,10 @@
         <div class="calendar">
         </div>
       </div>
+    </div>
+
+    <div id="app-spacer">
+    </div>
     </div>
 
     <footer class="footer">
