@@ -4,7 +4,8 @@
 :root {
   --black: #202426;
   --grey: #8697a2;
-  --dark-grey: rgba(32, 36, 38, 0.8);
+  --dark-grey: hsla(210, 8.6%, 24%, 0.8);
+  --darker-grey: hsla(210, 8.6%, 3.7%, .8);
   --light-grey: #e2e6e9;
   --lighter-grey: #f5f5f5;
   --white: #ffffff;
@@ -137,36 +138,44 @@ body {
 }
 
 /* ITINERARY LIST SIDEBAR */
-#itinerary-list-title {
-  font-weight: 400;
-}
 
 .itinerary-list-container {
-  text-align: left;
-  color: var(--black);
   font-weight: light;
   flex: 1;
+  display: flex;
   height: 100%;
 }
 
 #itinerary-list-display {
-  width: 192px;
+  color: var(--darker-grey);
+  text-align: left;
+  width: 256px;
+}
+
+#itinerary-list-title {
+  font-weight: 400;
+  font-size: 32px;
 }
 
 #itinerary-list {
+  margin-top: 16px;
   list-style-type: none;
+  padding: 0;
 }
 
 #itinerary-list > li {
-  margin-bottom: 18px;
+  margin-top: 8px;
+  /*margin-bottom: 18px;*/
   flex-wrap: nowrap;
 }
 
 .itinerary-list-item {
+  padding: 0;
   outline: none;
   border: none;
   background-color: inherit;
-  width: fit-content;
+  color: inherit;
+  /*width: fit-content;*/
   font-size: inherit;
 }
 
@@ -176,6 +185,7 @@ body {
 }
 
 #new-itinerary-btn {
+  margin-top: 8px;
   border: none;
   background-color: var(--gray);
   color: var(--grey);
