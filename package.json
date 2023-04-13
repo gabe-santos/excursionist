@@ -2,7 +2,7 @@
   "name": "only-dates",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -19,8 +19,12 @@
   },
   "homepage": "https://github.com/gabe-santos/onlydates#readme",
   "devDependencies": {
+    "aws-sdk": "^2.1357.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "mock-aws-s3": "^4.0.2",
+    "nock": "^13.3.0",
+    "sqlite3": "^5.1.6",
     "vite": "^4.2.1"
   },
   "dependencies": {
