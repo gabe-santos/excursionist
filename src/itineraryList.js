@@ -10,15 +10,11 @@ import { closeFormModal } from './formModal';
 
 export const itineraryList = {};
 
-export const createNewItinerary = e => {
-	e.preventDefault();
+export const addNewItinerary = (title, dateStart, dateEnd, desc) => {
+	const activities = formEventDescription.value.split(/[\n-]+/);
+	console.log(activities);
 
-	const newEntry = new Itinerary(
-		formEventTitle.value,
-		formEventDateStart.value,
-		formEventDateEnd.value,
-		formEventDescription.value
-	);
+	const newEntry = new Itinerary(title, dateStart, dateEnd, activities);
 
 	itineraryList[newEntry.key] = newEntry;
 

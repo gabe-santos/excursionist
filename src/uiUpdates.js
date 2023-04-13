@@ -38,8 +38,13 @@ const updateItineraryDisplay = itinerary => {
 	eventDate.textContent = itinerary.dateStart
 		? itinerary.getDateRangeString()
 		: 'No Date';
-	eventActivityCount.textContent = itinerary.activityCount + ' activities';
-	eventDescription.textContent = itinerary.description;
+	eventActivityCount.textContent = `${itinerary.getActivityCount()} ${
+		itinerary.getActivityCount() === 1 ? 'activity' : 'activities'
+	}`;
+
+	eventDescription.innerHTML = itinerary.activities
+		? itinerary.activities.map(activity => `<p>${activity}</p>`).join('')
+		: '';
 };
 
 export const updateUI = itineraryData => {
