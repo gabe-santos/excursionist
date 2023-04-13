@@ -1,5 +1,6 @@
 import {
 	newItineraryBtn,
+	form,
 	formModal,
 	formModalClose,
 	formModalSubmit,
@@ -25,15 +26,38 @@ window.onclick = e => {
 	if (e.target == formModal) closeFormModal();
 };
 
-formModalSubmit.onclick = e => {
+form.addEventListener('submit', e => {
 	e.preventDefault();
-	addNewItinerary(
-		formEventTitle.value,
-		formEventDateStart.value,
-		formEventDateEnd.value,
-		formEventDescription.value
-	);
-};
+	// Get values of input fields
+	const title = formEventTitle.value;
+	const dateStart = formEventDateStart.value;
+	const dateEnd = formEventDateEnd.value;
+	const description = formEventDescription.value;
+
+	// Check if required inputs are filled
+	if (
+		title.trim() === '' ||
+		dateStart.trim() === '' ||
+		dateEnd.trim() === '' ||
+		description.trim() === ''
+	) {
+		alert('Please fill all required fields.');
+		return;
+	}
+
+	// Call the function to add new itinerary
+	addNewItinerary(title, dateStart, dateEnd, description);
+});
+
+// formModalSubmit.onclick = e => {
+// 	e.preventDefault();
+// 	addNewItinerary(
+// 		formEventTitle.value,
+// 		formEventDateStart.value,
+// 		formEventDateEnd.value,
+// 		formEventDescription.value
+// 	);
+// };
 
 const init = () => {
 	addNewItinerary(

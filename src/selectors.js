@@ -13,6 +13,7 @@ export const itineraryItem = document.querySelector('.itinerary-list-item');
 
 //Form Selectors
 export const formModal = document.querySelector('.modal');
+export const form = document.querySelector('#modal-form');
 export const formModalSubmit = document.querySelector('#form-submit');
 export const formModalClose = document.querySelector('.close-btn');
 export const formEventTitle = document.querySelector('#form-title');

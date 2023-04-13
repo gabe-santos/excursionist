@@ -80,22 +80,37 @@ body {
 	background-color: hsla(0, 0%, 100%, 0.5);
 }
 
-.modal-form {
+.modal-window {
 	background-color: var(--white);
 	margin: 128px auto;
 	padding: 24px;
+	padding-top: 0px;
 	border-radius: var(--border-radius);
 	width: fit-content;
 	box-shadow: 0 15px 35px hsla(0, 0%, 0%, 0.2);
 }
 
+.form-header {
+	display: flex;
+}
+
+.spacer {
+	flex: 1;
+}
+
 .close-btn {
-	float: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	font-size: 32px;
+	width: 32px;
+	height: 32px;
+	border-radius: 8px;
 }
 
 .close-btn:hover {
 	cursor: pointer;
+	background-color: var(--light-grey);
 }
 
 .form-content {
