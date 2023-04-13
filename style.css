@@ -309,6 +309,7 @@ body {
 	display: flex;
 	text-align: left;
 	justify-content: space-between;
+	box-shadow: 0 15px 35px hsla(0, 0%, 0%, 0.08);
 	/*margin: 0;*/
 }
 

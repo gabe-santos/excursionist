@@ -2,7 +2,7 @@
   "name": "only-dates",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
