@@ -1,6 +1,7 @@
 import {
 	formEventTitle,
-	formEventDate,
+	formEventDateStart,
+	formEventDateEnd,
 	formEventDescription,
 } from './selectors';
 import { Itinerary } from './Itinerary';
@@ -14,7 +15,8 @@ export const createNewItinerary = e => {
 
 	const newEntry = new Itinerary(
 		formEventTitle.value,
-		formEventDate.value,
+		formEventDateStart.value,
+		formEventDateEnd.value,
 		formEventDescription.value
 	);
 

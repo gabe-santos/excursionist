@@ -27,6 +27,7 @@ const init = () => {
 	const newUserData = new Itinerary(
 		'Create a New Itinerary',
 		new Date(),
+		new Date(),
 		"Click '+ New Itinerary' to the left to get started!"
 	);
 	itineraryList[newUserData.key] = newUserData;

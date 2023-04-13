@@ -35,8 +35,8 @@ const updateSidebar = data => {
 
 const updateItineraryDisplay = itinerary => {
 	eventTitle.textContent = itinerary.title;
-	eventDate.textContent = itinerary.date
-		? itinerary.getDateString()
+	eventDate.textContent = itinerary.dateStart
+		? itinerary.getDateRangeString()
 		: 'No Date';
 	eventActivityCount.textContent = itinerary.activityCount + ' activities';
 	eventDescription.textContent = itinerary.description;

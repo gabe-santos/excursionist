@@ -1,7 +1,8 @@
 import {
 	formModal,
 	formEventTitle,
-	formEventDate,
+	formEventDateStart,
+	formEventDateEnd,
 	formEventDescription,
 } from './selectors';
 
@@ -16,6 +17,7 @@ export const closeFormModal = () => {
 
 const clearFormModal = () => {
 	formEventTitle.value = '';
-	formEventDate.value = '';
+	formEventDateStart.value = '';
+	formEventDateEnd.value = '';
 	formEventDescription.value = '';
 };

@@ -25,13 +25,13 @@
     <div class="app">
       <div class="itinerary-list-container">
         <div id="itinerary-list-display">
-        <h2 id="itinerary-list-title">Itineraries</h2>
-        <ul id="itinerary-list"></ul>
+          <h2 id="itinerary-list-title">Itineraries</h2>
+          <ul id="itinerary-list"></ul>
 
-        <button onclick="createNewItinerary()" id="new-itinerary-btn">
-          + New Itinerary
-        </button>
-      </div>
+          <button onclick="createNewItinerary()" id="new-itinerary-btn">
+            + New Itinerary
+          </button>
+        </div>
       </div>
 
       <!-- New Itinerary Modal Form -->
@@ -42,11 +42,23 @@
             <h1>New Itinerary</h1>
 
             <div class="form-content">
-              <label for="title">Title</label>
-              <input type="text" name="title" id="form-title" required />
+              <div class="input-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="form-title" required />
+              </div>
 
-              <label for="date">Date</label>
-              <input type="date" name="date" id="form-date" />
+
+              <div class="date-group">
+                <div class="input-group">
+                  <label for="date-start">Start</label>
+                  <input type="date" name="date-start" id="form-date-start" />
+                </div>
+
+                <div class="input-group">
+                  <label for="date-end">End</label>
+                  <input type="date" name="date-end" id="form-date-end" />
+                </div>
+              </div>
 
               <!--<label for="activityCount">Activities</label>-->
               <!--<input type="number" name="activityCount" id="form-activity-count" />-->
@@ -63,21 +75,21 @@
       </div>
 
       <div class="itinerary-display-wrapper">
-      <div class="itinerary-display">
-        <div class="event-details-wrapper">
-          <h1 class="event-title" id="event-title">Title</h1>
-          <p class="event-date" id="event-date">Date:</p>
-          <p class="event-activity-count">Activities:</p>
-          <p class="event-description">Description:</p>
-        </div>
+        <div class="itinerary-display">
+          <div class="event-details-wrapper">
+            <h1 class="event-title" id="event-title">Title</h1>
+            <p class="event-date" id="event-date">Date:</p>
+            <p class="event-activity-count">Activities:</p>
+            <p class="event-description">Description:</p>
+          </div>
 
-        <div class="calendar">
+          <div class="calendar">
+          </div>
         </div>
       </div>
-    </div>
 
-    <div id="app-spacer">
-    </div>
+      <div id="app-spacer">
+      </div>
     </div>
 
     <!-- Footer -->
