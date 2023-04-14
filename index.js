@@ -67,6 +67,11 @@ const init = () => {
 		"Click '+ New Itinerary' to the left to get started!"
 	);
 	updateUI(itineraryList);
+
+	fetch('http://localhost:3000/data')
+		.then(response => response.json())
+		.then(data => console.log(data))
+		.catch(error => console.error(error));
 };
 
 addEventListener('load', init); // run init on page load
