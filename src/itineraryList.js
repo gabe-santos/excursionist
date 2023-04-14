@@ -12,7 +12,6 @@ export const itineraryList = {};
 
 export const addNewItinerary = (title, dateStart, dateEnd, desc) => {
 	const activities = formEventDescription.value.split(/[\n-]+/);
-	console.log(activities);
 
 	const newEntry = new Itinerary(title, dateStart, dateEnd, activities);
 
