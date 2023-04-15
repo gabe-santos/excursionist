@@ -368,7 +368,7 @@ body {
 }
 
 /* MEDIA QUERIES */
-@media (width <= 840px) {
+@media (width <= 768px) {
   #navbar {
     flex-direction: column;
   }
