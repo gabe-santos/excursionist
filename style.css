@@ -328,7 +328,7 @@ body {
   display: flex;
   text-align: left;
   justify-content: space-between;
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-5);
   /*margin: 0;*/
 }
 
@@ -422,7 +422,7 @@ body {
   object-fit: cover;
   margin-right: -64px;
   margin-left: 32px;
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow-5);
 }
 
 .calendar-inner {
