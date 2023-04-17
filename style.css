@@ -1,355 +1,357 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 /* CSS variables */
 :root {
-  --black: #202426;
-  --grey: #8697a2;
-  --dark-grey: hsla(210, 8.6%, 24%, 0.8);
-  --darker-grey: hsla(210, 8.6%, 3.7%, 0.8);
-  --light-grey: #e2e6e9;
-  --lighter-grey: #f5f5f5;
-  --white: #ffffff;
-  --purple: hsl(244, 44%, 49%);
-  --teal: #40a69f;
+	--black: #202426;
+	--grey: #8697a2;
+	--dark-grey: hsla(210, 8.6%, 24%, 0.8);
+	--darker-grey: hsla(210, 8.6%, 3.7%, 0.8);
+	--light-grey: #e2e6e9;
+	--lighter-grey: #f5f5f5;
+	--white: #ffffff;
+	--purple: hsl(244, 44%, 49%);
+	--teal: hsl(176, 44%, 45%);
 
-  --border-radius: 24px;
+	--border-radius: 24px;
 
-  --shadow-1: 0 1px 3px hsla(210, 0%, 0%, 0.12),
-    0 1px 2px hsla(210, 0%, 0%, 0.24);
-  --shadow-2: 0 3px 6px hsla(210, 0%, 0%, 0.15),
-    0 2px 4px hsla(210, 0%, 0%, 0.12);
-  --shadow-3: 0 10px 20px hsla(210, 0%, 0%, 0.15),
-    0 3px 6px hsla(210, 0%, 0%, 0.1);
-  --shadow-4: 0 15px 25px hsla(210, 0%, 0%, 0.15),
-    0 5px 10px hsla(210, 0%, 0%, 0.5);
-  --shadow-5: 0 20px 40px hsla(210, 0%, 0%, 0.2);
-  --button-shadow: inset 0 1px 0 hsl(244, 44%, 59%),
-    0 1px 3px hsla(0, 0%, 0%, 0.2);
+	--shadow-1: 0 1px 3px hsla(210, 0%, 0%, 0.12),
+		0 1px 2px hsla(210, 0%, 0%, 0.24);
+	--shadow-2: 0 3px 6px hsla(210, 0%, 0%, 0.15),
+		0 2px 4px hsla(210, 0%, 0%, 0.12);
+	--shadow-3: 0 10px 20px hsla(210, 0%, 0%, 0.15),
+		0 3px 6px hsla(210, 0%, 0%, 0.1);
+	--shadow-4: 0 15px 25px hsla(210, 0%, 0%, 0.15),
+		0 5px 10px hsla(210, 0%, 0%, 0.5);
+	--shadow-5: 0 20px 40px hsla(210, 0%, 0%, 0.2);
+	--button-shadow: inset 0 1px 0 hsl(244, 44%, 59%),
+		0 1px 3px hsla(0, 0%, 0%, 0.2);
 
-  --font: Nunito;
-  --font-body: Open Sans;
+	--font: Nunito;
+	--font-body: Open Sans;
 
-  /* CALENDAR VARS */
-  --calendar-bg-color: #ffffff;
-  --calendar-font-color: var(--dark-grey);
-  --weekdays-border-bottom-color: #404040;
-  --calendar-date-hover-color: #505050;
-  --calendar-current-date-color: white;
-  --calendar-today-color: linear-gradient(to bottom, #03a9f4, #2196f3);
-  --calendar-today-innerborder-color: transparent;
-  --calendar-nextprev-bg-color: transparent;
-  --next-prev-arrow-color: #fff;
-  --calendar-border-radius: 16px;
-  --calendar-prevnext-date-color: var(--light-grey);
+	/* CALENDAR VARS */
+	--calendar-bg-color: #ffffff;
+	--calendar-font-color: var(--dark-grey);
+	--weekdays-border-bottom-color: #404040;
+	--calendar-date-hover-color: #505050;
+	--calendar-current-date-color: white;
+	--calendar-today-color: linear-gradient(
+		to bottom,
+		hsl(176, 35%, 53%),
+		hsl(176, 26%, 57%)
+	);
+	--calendar-today-innerborder-color: transparent;
+	--calendar-nextprev-bg-color: transparent;
+	--next-prev-arrow-color: #fff;
+	--calendar-border-radius: 16px;
+	--calendar-prevnext-date-color: var(--light-grey);
 }
 
 * {
-  margin: 0 auto; /* sets initial margin to 0 */
+	margin: 0 auto; /* sets initial margin to 0 */
 }
 
 body {
-  padding: 16px;
-  font-family: var(--font);
-  background-color: var(--light-grey);
+	padding: 16px;
+	font-family: var(--font);
+	background-color: var(--light-grey);
 }
 
 /* NAVBAR */
 #navbar {
-  width: 100%;
-  display: flex;
-  align-items: center;
+	width: 100%;
+	display: flex;
+	align-items: center;
 }
 
 #spacer {
-  visibility: hidden;
-  flex-grow: 1;
+	visibility: hidden;
+	flex-grow: 1;
 }
 
 #account-nav {
-  width: fit-content;
+	width: fit-content;
 }
 
 .logo {
-  color: var(--purple);
-  width: fit-content;
+	color: var(--purple);
+	width: fit-content;
 }
 /*  */
 
 /* NEW ITINERARY FORM */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: hsla(0, 0%, 100%, 0.5);
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: hsla(0, 0%, 100%, 0.5);
 }
 
 .modal-window {
-  background-color: var(--white);
-  margin: 128px auto;
-  padding: 24px;
-  padding-top: 0px;
-  border-radius: var(--border-radius);
-  width: fit-content;
-  box-shadow: var(--shadow-5);
+	background-color: var(--white);
+	margin: 128px auto;
+	padding: 24px;
+	padding-top: 0px;
+	border-radius: var(--border-radius);
+	width: fit-content;
+	box-shadow: var(--shadow-5);
 }
 
 .form-header {
-  padding-top: 24px;
-  display: flex;
+	padding-top: 24px;
+	display: flex;
 }
 
 .spacer {
-  flex: 1;
+	flex: 1;
 }
 
 .close-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 32px;
+	width: 32px;
+	height: 32px;
+	border-radius: 8px;
 }
 
 .close-btn:hover {
-  cursor: pointer;
-  background-color: var(--light-grey);
+	cursor: pointer;
+	background-color: var(--light-grey);
 }
 
 .form-content {
-  display: flex;
-  width: 500px;
-  flex-direction: column;
+	display: flex;
+	width: 500px;
+	flex-direction: column;
 }
 
 .input-group {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 .input-group > input {
-  font: inherit;
-  margin-bottom: 12px;
-  border: 1px solid var(--light-grey);
-  border-radius: 4px;
-  padding: 8px 8px;
-  font-size: 16px;
+	font: inherit;
+	margin-bottom: 12px;
+	border: 1px solid var(--light-grey);
+	border-radius: 4px;
+	padding: 8px 8px;
+	font-size: 16px;
 }
 
 .input-group > textarea {
-  font: inherit;
-  margin-bottom: 12px;
-  border: 1px solid var(--light-grey);
-  border-radius: 4px;
-  padding: 8px 8px;
-  font-size: 16px;
+	font: inherit;
+	margin-bottom: 12px;
+	border: 1px solid var(--light-grey);
+	border-radius: 4px;
+	padding: 8px 8px;
+	font-size: 16px;
 }
 
 .date-group {
-  display: flex;
+	display: flex;
 }
 
 .form-content > textarea {
-  border: 1px solid var(--light-grey);
-  border-radius: 4px;
-  padding: 8px 8px;
-  font-size: 16px;
+	border: 1px solid var(--light-grey);
+	border-radius: 4px;
+	padding: 8px 8px;
+	font-size: 16px;
 }
 
 .submit-btn {
-  background-color: var(--purple);
-  color: var(--white);
-  border: none;
-  border-radius: 8px;
-  width: 50%;
-  font-size: 16px;
-  padding: 16px;
-  box-shadow: var(--button-shadow);
+	background-color: var(--purple);
+	color: var(--white);
+	border: none;
+	border-radius: 8px;
+	width: 50%;
+	font-size: 16px;
+	padding: 16px;
+	box-shadow: var(--button-shadow);
 }
 
 .submit-btn:hover {
-  background-image: linear-gradient(rgb(0 0 0/10%) 0 0);
-  cursor: pointer;
+	background-image: linear-gradient(rgb(0 0 0/10%) 0 0);
+	cursor: pointer;
 }
 
 .submit-btn:active {
-  box-shadow: none;
+	box-shadow: none;
 }
 
 /* END OF NEW ITINERARY FORM */
 
 /* MAIN APP SECTION */
 .app {
-  padding-top: 64px; /*probably adjust this later*/
-  display: flex;
-  justify-content: center;
+	padding-top: 64px; /*probably adjust this later*/
+	display: flex;
+	justify-content: center;
 }
 
 /* ITINERARY LIST SIDEBAR */
 
 .itinerary-list-container {
-  font-weight: light;
-  flex: 1;
-  display: flex;
-  height: 100%;
+	font-weight: light;
+	flex: 1;
+	display: flex;
+	height: 100%;
 }
 
 #itinerary-list-display {
-  color: var(--darker-grey);
-  text-align: left;
-  width: 384px;
+	color: var(--darker-grey);
+	text-align: left;
+	width: 384px;
 }
 
 #itinerary-list-title {
-  font-weight: 400;
-  font-size: 32px;
+	font-weight: 400;
+	font-size: 32px;
 }
 
 #itinerary-list {
-  margin-top: 16px;
-  list-style-type: none;
-  padding: 0;
+	margin-top: 16px;
+	list-style-type: none;
+	padding: 0;
 }
 
 #itinerary-list > li {
-  margin-top: 8px;
-  /*margin-bottom: 18px;*/
-  flex-wrap: nowrap;
+	margin-top: 8px;
+	/*margin-bottom: 18px;*/
+	flex-wrap: nowrap;
 }
 
 .itinerary-list-item {
-  padding: 0;
-  outline: none;
-  border: none;
-  background-color: inherit;
-  color: inherit;
-  /* width: fit-content; */
-  font-size: inherit;
+	padding: 0;
+	outline: none;
+	border: none;
+	background-color: inherit;
+	color: inherit;
+	/* width: fit-content; */
+	font-size: inherit;
 }
 
 .itinerary-list-item:hover {
-  cursor: pointer;
-  color: var(--dark-grey);
+	cursor: pointer;
+	color: var(--dark-grey);
 }
 
 .itinerary-list-btns {
-  margin: 0;
-  padding: 0;
-  width: fit-content;
+	margin: 0;
+	padding: 0;
+	width: fit-content;
 }
 
 .edit-btn {
-  display: none;
-  padding: 0;
-  border: none;
-  background-color: inherit;
+	display: none;
+	padding: 0;
+	border: none;
+	background-color: inherit;
 }
 
 .edit-btn > svg {
-  color: var(--grey);
-  height: 16px;
-  width: 16px;
-  vertical-align: bottom;
+	color: var(--grey);
+	height: 16px;
+	width: 16px;
+	vertical-align: bottom;
 }
 
 .edit-btn > svg:hover {
-  color: var(--black);
-  cursor: pointer;
+	color: var(--black);
+	cursor: pointer;
 }
 
 .delete-btn {
-  display: none;
-  padding: 0;
-  border: none;
-  background-color: inherit;
+	display: none;
+	padding: 0;
+	border: none;
+	background-color: inherit;
 }
 
 .delete-btn > svg {
-  color: var(--grey);
-  height: 16px;
-  width: 16px;
-  vertical-align: bottom;
+	color: var(--grey);
+	height: 16px;
+	width: 16px;
+	vertical-align: bottom;
 }
 
 .delete-btn > svg:hover {
-  color: var(--black);
-  cursor: pointer;
+	color: var(--black);
+	cursor: pointer;
 }
 
 .itinerary-list-btns:hover > .edit-btn {
-  display: inline-block;
+	display: inline-block;
 }
 
 .itinerary-list-btns:hover > .delete-btn {
-  display: inline-block;
+	display: inline-block;
 }
 
 #new-itinerary-btn {
-  margin-top: 8px;
-  border: none;
-  background-color: var(--gray);
-  color: var(--grey);
+	margin-top: 8px;
+	border: none;
+	background-color: var(--gray);
+	color: var(--grey);
 }
 
 #new-itinerary-btn:hover {
-  color: var(--black);
-  cursor: pointer;
+	color: var(--black);
+	cursor: pointer;
 }
 /* END OF ITINERARY LIST SIDEBAR */
 
 /* ITINERARY DISPLAY */
 .itinerary-display-wrapper {
-  display: flex;
-  flex: 2;
-  justify-content: center;
-  height: 100%;
+	display: flex;
+	flex: 2;
+	justify-content: center;
+	height: 100%;
 }
 
 .itinerary-display {
-  background-color: var(--white);
-  color: var(--black);
-  border-radius: var(--border-radius);
-  width: 75vw;
-  max-width: 768px;
-  padding: 24px 24px;
-  /*margin-right: 24%;*/
-  display: flex;
-  text-align: left;
-  justify-content: space-between;
-  box-shadow: var(--shadow-5);
-  /*margin: 0;*/
+	background-color: var(--white);
+	color: var(--black);
+	border-radius: var(--border-radius);
+	width: 75vw;
+	max-width: 768px;
+	padding: 24px 24px;
+	/*margin-right: 24%;*/
+	display: flex;
+	text-align: left;
+	justify-content: space-between;
+	box-shadow: var(--shadow-5);
+	/*margin: 0;*/
 }
 
 .event-description {
-  max-width: 30em;
-  line-height: 1.5em;
+	max-width: 30em;
+	line-height: 1.5em;
 }
 
 .event-details-wrapper {
-  flex: 1;
-  width: 50vw;
+	flex: 1;
+	width: 50vw;
 }
 
 .event-details-wrapper > p {
-  margin: 24px 12px;
+	margin: 24px 12px;
 }
 
 .event-title {
-  font-weight: 700;
-  font-size: 48px;
-  letter-spacing: -1px;
+	font-weight: 700;
+	font-size: 48px;
+	letter-spacing: -1px;
 }
 
 /* .calendar > p {
@@ -364,196 +366,196 @@ body {
 /* END OF ITINERARY DISPLAY */
 
 #app-spacer {
-  flex: 1;
+	flex: 1;
 }
 
 /* MEDIA QUERIES */
 @media (width <= 768px) {
-  #navbar {
-    flex-direction: column;
-  }
+	#navbar {
+		flex-direction: column;
+	}
 
-  .app {
-    flex-direction: column;
-    align-items: center;
-  }
+	.app {
+		flex-direction: column;
+		align-items: center;
+	}
 
-  .itinerary-display {
-    flex-direction: column;
-    text-align: center;
-    margin: 0 40px;
-    padding-left: 50px;
-    padding-right: 50px;
-    width: 75%;
-  }
+	.itinerary-display {
+		flex-direction: column;
+		text-align: center;
+		margin: 0 40px;
+		padding-left: 50px;
+		padding-right: 50px;
+		width: 75%;
+	}
 
-  .calendar {
-    margin: 100px 0 -80px 0;
-    width: 100%;
-  }
+	.calendar {
+		margin: 100px 0 -80px 0;
+		width: 100%;
+	}
 }
 
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: var(--grey);
-  text-align: center;
-  font-size: 0.9em;
-  margin-bottom: 20px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: var(--grey);
+	text-align: center;
+	font-size: 0.9em;
+	margin-bottom: 20px;
 }
 
 /* CALENDAR CSS */
 .calendar {
-  /* position: relative; */
-  max-width: 512px; /*change as per your design need */
-  min-width: 384px;
-  background-color: var(--white);
-  color: var(--calendar-font-color);
-  /* margin: 20px auto; */
-  /* box-sizing: border-box; */
-  /* overflow: hidden; */
-  /* font-weight: normal; */
-  border-radius: var(--border-radius);
-  /* max-width: 333px; */
-  /* width: 28vw; */
-  /* height: fit-content; */
-  object-fit: cover;
-  margin-right: -64px;
-  margin-left: 32px;
-  box-shadow: var(--shadow-5);
+	/* position: relative; */
+	max-width: 512px; /*change as per your design need */
+	min-width: 384px;
+	background-color: var(--white);
+	color: var(--calendar-font-color);
+	/* margin: 20px auto; */
+	/* box-sizing: border-box; */
+	/* overflow: hidden; */
+	/* font-weight: normal; */
+	border-radius: var(--border-radius);
+	/* max-width: 333px; */
+	/* width: 28vw; */
+	/* height: fit-content; */
+	object-fit: cover;
+	margin-right: -64px;
+	margin-left: 32px;
+	box-shadow: var(--shadow-5);
 }
 
 .calendar-inner {
-  padding: 12px 12px;
+	padding: 12px 12px;
 }
 
 .calendar .calendar-inner .calendar-body {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  text-align: center;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	text-align: center;
 }
 
 .calendar .calendar-inner .calendar-body div {
-  padding: 4px;
-  min-height: 32px;
-  line-height: 32px;
-  border: 1px solid transparent;
-  margin: 12px 4px 0px;
+	padding: 4px;
+	min-height: 32px;
+	line-height: 32px;
+	border: 1px solid transparent;
+	margin: 12px 4px 0px;
 }
 
 .calendar .calendar-inner .calendar-body div:nth-child(-n + 7) {
-  border: 1px solid transparent;
-  border-bottom: 1px solid var(--weekdays-border-bottom-color);
+	border: 1px solid transparent;
+	border-bottom: 1px solid var(--weekdays-border-bottom-color);
 }
 
 .calendar .calendar-inner .calendar-body div:nth-child(-n + 7):hover {
-  border: 1px solid transparent;
-  border-bottom: 1px solid var(--weekdays-border-bottom-color);
+	border: 1px solid transparent;
+	border-bottom: 1px solid var(--weekdays-border-bottom-color);
 }
 
 .calendar .calendar-inner .calendar-body div > a {
-  color: var(--calendar-font-color);
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
+	color: var(--calendar-font-color);
+	text-decoration: none;
+	display: flex;
+	justify-content: center;
 }
 
 .calendar .calendar-inner .calendar-body div:hover {
-  border: 1px solid var(--calendar-date-hover-color);
-  border-radius: 4px;
+	border: 1px solid var(--calendar-date-hover-color);
+	border-radius: 4px;
 }
 
 .calendar .calendar-inner .calendar-body div.empty-dates:hover {
-  border: 1px solid transparent;
+	border: 1px solid transparent;
 }
 
 .calendar .calendar-inner .calendar-controls {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 }
 
 .calendar .calendar-inner .calendar-today-date {
-  display: grid;
-  text-align: center;
-  cursor: pointer;
-  margin: 4px 0px;
-  background: var(--calendar-current-date-color);
-  padding: 8px 0px;
-  border-radius: 12px;
-  width: 80%;
-  margin: auto;
+	display: grid;
+	text-align: center;
+	cursor: pointer;
+	margin: 4px 0px;
+	background: var(--calendar-current-date-color);
+	padding: 8px 0px;
+	border-radius: 12px;
+	width: 80%;
+	margin: auto;
 }
 
 .calendar .calendar-inner .calendar-controls .calendar-year-month {
-  display: flex;
-  min-width: 100px;
-  justify-content: space-evenly;
-  align-items: center;
+	display: flex;
+	min-width: 100px;
+	justify-content: space-evenly;
+	align-items: center;
 }
 
 .calendar .calendar-inner .calendar-controls .calendar-next {
-  text-align: right;
+	text-align: right;
 }
 
 .calendar
-  .calendar-inner
-  .calendar-controls
-  .calendar-year-month
-  .calendar-year-label,
+	.calendar-inner
+	.calendar-controls
+	.calendar-year-month
+	.calendar-year-label,
 .calendar
-  .calendar-inner
-  .calendar-controls
-  .calendar-year-month
-  .calendar-month-label {
-  font-weight: 500;
-  font-size: 24px;
+	.calendar-inner
+	.calendar-controls
+	.calendar-year-month
+	.calendar-month-label {
+	font-weight: 500;
+	font-size: 24px;
 }
 
 .calendar .calendar-inner .calendar-body .calendar-today {
-  background: var(--calendar-today-color);
-  border-radius: 4px;
+	background: var(--calendar-today-color);
+	border-radius: 4px;
 }
 
 .calendar .calendar-inner .calendar-body .calendar-today:hover {
-  border: 1px solid transparent;
+	border: 1px solid transparent;
 }
 
 .calendar .calendar-inner .calendar-body .calendar-today a {
-  outline: 2px solid var(--calendar-today-innerborder-color);
+	outline: 2px solid var(--calendar-today-innerborder-color);
 }
 
 .calendar .calendar-inner .calendar-controls .calendar-next a,
 .calendar .calendar-inner .calendar-controls .calendar-prev a {
-  color: var(--calendar-font-color);
-  font-family: arial, consolas, sans-serif;
-  font-size: 24px;
-  text-decoration: none;
-  padding: 4px 12px;
-  display: inline-block;
-  background: var(--calendar-nextprev-bg-color);
-  margin: 12px 0 10px 0;
+	color: var(--calendar-font-color);
+	font-family: arial, consolas, sans-serif;
+	font-size: 24px;
+	text-decoration: none;
+	padding: 4px 12px;
+	display: inline-block;
+	background: var(--calendar-nextprev-bg-color);
+	margin: 12px 0 10px 0;
 }
 
 .calendar .calendar-inner .calendar-controls .calendar-next a svg,
 .calendar .calendar-inner .calendar-controls .calendar-prev a svg {
-  height: 24px;
-  width: 24px;
+	height: 24px;
+	width: 24px;
 }
 
 .calendar .calendar-inner .calendar-controls .calendar-next a svg path,
 .calendar .calendar-inner .calendar-controls .calendar-prev a svg path {
-  fill: var(--dark-grey);
+	fill: var(--dark-grey);
 }
 
 .calendar .calendar-inner .calendar-body .prev-dates,
 .calendar .calendar-inner .calendar-body .next-dates {
-  color: var(--calendar-prevnext-date-color);
+	color: var(--calendar-prevnext-date-color);
 }
 
 .calendar .calendar-inner .calendar-body .prev-dates:hover,
 .calendar .calendar-inner .calendar-body .next-dates:hover {
-  border: 1px solid transparent;
-  pointer-events: none;
+	border: 1px solid transparent;
+	pointer-events: none;
 }
