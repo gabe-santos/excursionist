@@ -11,7 +11,7 @@ import {
 } from './src/selectors';
 import { openFormModal, closeFormModal } from './src/formModal';
 import { updateUI } from './src/uiUpdates';
-import { Itinerary } from './src/Itinerary'; // Itinerary Object
+// import { Itinerary } from './src/Itinerary'; // Itinerary Object
 import { calendarControl } from './src/calendar';
 import { itineraryList, addNewItinerary } from './src/itineraryList';
 
