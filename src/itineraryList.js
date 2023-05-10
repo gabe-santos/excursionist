@@ -10,13 +10,8 @@ import { closeFormModal } from './formModal';
 
 export const itineraryList = {};
 
-export const addNewItinerary = (title, dateStart, dateEnd, desc) => {
-	console.log(desc);
-	console.log(typeof desc);
-	const activities = desc.split(/[\n-]+/); // Split the description into an array of activities
-	// const activities = desc;
-
-	const newEntry = new Itinerary(title, dateStart, dateEnd, activities);
+export const addNewItinerary = (title, dateStart, dateEnd, activityArr) => {
+	const newEntry = new Itinerary(title, dateStart, dateEnd, activityArr);
 
 	itineraryList[newEntry.key] = newEntry;
 

@@ -50,12 +50,9 @@ window.onclick = e => {
 // });
 
 const init = () => {
-	addNewItinerary(
-		'Create a New Itinerary',
-		new Date(),
-		new Date(),
-		"Click '+ New Itinerary' to the left to get started!"
-	);
+	addNewItinerary('Create a New Itinerary', new Date(), new Date(), [
+		"Click '+ New Itinerary' to the left to get started!",
+	]);
 
 	let tempList;
 
@@ -68,7 +65,7 @@ const init = () => {
 					item.title,
 					item.dateStart,
 					item.dateEnd,
-					item.activities
+					JSON.parse(item.activities)
 				);
 			});
 		})
