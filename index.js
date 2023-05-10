@@ -11,7 +11,6 @@ import {
 } from './src/selectors';
 import { openFormModal, closeFormModal } from './src/formModal';
 import { updateUI } from './src/uiUpdates';
-// import { Itinerary } from './src/Itinerary'; // Itinerary Object
 import { calendarControl } from './src/calendar';
 import { itineraryList, addNewItinerary } from './src/itineraryList';
 
@@ -50,12 +49,6 @@ window.onclick = e => {
 // });
 
 const init = () => {
-	addNewItinerary('Create a New Itinerary', new Date(), new Date(), [
-		"Click '+ New Itinerary' to the left to get started!",
-	]);
-
-	let tempList;
-
 	fetch('http://localhost:3001/data')
 		.then(response => response.json())
 		.then(data => {

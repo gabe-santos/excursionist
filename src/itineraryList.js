@@ -1,9 +1,3 @@
-import {
-	formEventTitle,
-	formEventDateStart,
-	formEventDateEnd,
-	formEventDescription,
-} from './selectors';
 import { Itinerary } from './Itinerary';
 import { updateUI } from './uiUpdates';
 import { closeFormModal } from './formModal';
