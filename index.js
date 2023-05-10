@@ -56,6 +56,7 @@ const init = () => {
 			data.forEach(item => {
 				addNewItinerary(
 					item.title,
+					item.id,
 					item.dateStart,
 					item.dateEnd,
 					JSON.parse(item.activities)
@@ -65,7 +66,6 @@ const init = () => {
 		.catch(error => {
 			console.error('Error:', error); // Handle any error that occurred
 		});
-
 	updateUI(itineraryList);
 
 	const today = new Date();

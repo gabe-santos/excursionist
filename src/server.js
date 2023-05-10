@@ -49,6 +49,24 @@ app.get('/data', (req, res) => {
 	});
 });
 
+// DELETE route
+app.delete('/data/:id', (req, res) => {
+	const id = req.params.id;
+
+	db.run('DELETE FROM itineraries WHERE id = ?', id, function (err) {
+		if (err) {
+			console.error('Error deleting itinerary:', err);
+			res.status(500).send('Server error');
+		} else {
+			if (this.changes > 0) {
+				res.sendStatus(204); // Send a success status code (No Content)
+			} else {
+				res.sendStatus(404); // Send a not found status code
+			}
+		}
+	});
+});
+
 // POST route to create a new itinerary
 app.post('/data', (req, res) => {
 	const { title, dateStart, dateEnd, activities } = req.body;

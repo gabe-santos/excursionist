@@ -1,9 +1,9 @@
 import { generateKey } from './generateKey';
 
 export class Itinerary {
-	constructor(title, dateStart, dateEnd, activities) {
+	constructor(title, id, dateStart, dateEnd, activities) {
 		this.title = title;
-		this.key = generateKey();
+		this.key = id;
 		this.dateStart = new Date(dateStart);
 		this.dateEnd = new Date(dateEnd);
 		this.activities = activities;
