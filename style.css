@@ -334,6 +334,10 @@ body {
 	/*margin: 0;*/
 }
 
+.itinerary-display-item::marker {
+	color: var(--grey);
+}
+
 .event-description {
 	max-width: 30em;
 	line-height: 1.5em;

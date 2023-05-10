@@ -82,7 +82,12 @@ const updateItineraryDisplay = itinerary => {
 	}`;
 
 	eventDescription.innerHTML = itinerary.activities
-		? itinerary.activities.map(activity => `<p>${activity}</p>`).join('')
+		? itinerary.activities
+				.map(
+					activity =>
+						`<li class="itinerary-display-item">${activity}</li>`
+				)
+				.join('')
 		: '';
 };
 
