@@ -1,6 +1,13 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
+const { exec } = require('child_process');
+
+// async function startPHPServer() {
+// 	const phpServer = await import('php-server');
+// 	const server = await phpServer();
+// 	console.log(`PHP server running at ${server.url}`);
+// }
 
 const app = express();
 const port = 3001;
@@ -15,6 +22,20 @@ const db = new sqlite3.Database('data.db', err => {
 
 app.use(cors());
 app.use(express.json()); // Add this line to parse JSON request bodies
+
+// Testing for php
+app.get('/hello', (req, res) => {
+	// Call the PHP script using the "exec" function
+	exec('php /hello.php', (error, stdout, stderr) => {
+		if (error) {
+			console.error(`Error executing PHP script: ${error}`);
+			res.status(500).send('Server error');
+		} else {
+			console.log(`PHP script output: ${stdout}`);
+			res.send(stdout);
+		}
+	});
+});
 
 // GET route to retrieve all itineraries
 app.get('/data', (req, res) => {
@@ -66,3 +87,7 @@ app.post('/data', (req, res) => {
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
 });
+
+// startPHPServer().catch(error => {
+// 	console.error('Error starting PHP server:', error);
+// });
