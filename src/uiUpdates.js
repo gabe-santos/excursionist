@@ -25,7 +25,6 @@ const updateSidebar = data => {
         <div class="itinerary-list-btns">
           <button class="itinerary-list-item" id="${key}">${it.title}</button>
 
-          <button class="edit-btn">${pencil}</button>
           <button class="delete-btn">${trash}</button>
         </div>
       </div>`;
@@ -75,9 +74,15 @@ const deleteItinerary = e => {
 
 const updateItineraryDisplay = itinerary => {
 	eventTitle.textContent = itinerary.title;
-	eventDate.textContent = itinerary.dateStart
-		? itinerary.getDateRangeString()
-		: 'No Date';
+	console.log(itinerary.getDateRangeString());
+	console.log(itinerary.dateStart, itinerary.dateEnd);
+
+	if (itinerary.dateStart.getTime() === itinerary.dateEnd.getTime())
+		eventDate.textContent = itinerary.dateStart.toLocaleDateString();
+	else
+		eventDate.textContent = itinerary.dateStart
+			? itinerary.getDateRangeString()
+			: 'No Date';
 	eventActivityCount.textContent = `${itinerary.getActivityCount()} ${
 		itinerary.getActivityCount() === 1 ? 'activity' : 'activities'
 	}`;
@@ -95,6 +100,7 @@ const updateItineraryDisplay = itinerary => {
 };
 
 export const updateUI = itineraryData => {
+	console.log(itineraryData);
 	updateSidebar(itineraryData);
 
 	// Update Itinerary Display

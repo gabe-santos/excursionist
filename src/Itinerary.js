@@ -3,11 +3,11 @@ import { generateKey } from './generateKey';
 export class Itinerary {
 	constructor(title, id, dateStart, dateEnd, activities) {
 		this.title = title;
-		this.key = id;
+		this.id = id;
 		this.dateStart = new Date(dateStart);
 		this.dateEnd = new Date(dateEnd);
 		this.activities = activities;
-
+		console.log(dateStart);
 		if (
 			Array.isArray(activities) &&
 			activities.every(item => typeof item === 'string')
@@ -22,6 +22,7 @@ export class Itinerary {
 	}
 
 	getDateRangeString() {
+		console.log(this.dateStart.toLocaleDateString());
 		return (
 			this.dateStart.toLocaleDateString() +
 			' to ' +

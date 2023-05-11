@@ -77,7 +77,7 @@ export const highlightDateRange = dateRangeToHighlight => {
 	const allDates = document.querySelectorAll('.days li');
 	allDates.forEach(date => {
 		date.classList.remove('highlight', 'light-highlight'); // remove both classes
-		if (date.innerText !== '') {
+		if (date.innerText !== '' && !date.classList.contains('inactive')) {
 			const currDate = new Date(currYear, currMonth, date.innerText);
 			if (
 				currDate.getTime() === startDate.getTime() ||

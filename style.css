@@ -85,7 +85,7 @@ body {
 .modal {
 	display: none;
 	position: fixed;
-	z-index: 2;
+	z-index: 3;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -143,20 +143,24 @@ body {
 
 .input-group > input {
 	font: inherit;
-	margin-bottom: 12px;
-	border: 1px solid var(--light-grey);
-	border-radius: 4px;
+	margin-bottom: 16px;
+	border: 2px solid var(--light-grey);
+	border-radius: 8px;
 	padding: 8px 8px;
 	font-size: 16px;
 }
 
 .input-group > textarea {
 	font: inherit;
-	margin-bottom: 12px;
-	border: 1px solid var(--light-grey);
-	border-radius: 4px;
+	margin-bottom: 16px;
+	border: 2px solid var(--light-grey);
+	border-radius: 8px;
 	padding: 8px 8px;
 	font-size: 16px;
+}
+
+#form-description {
+	width: 100%;
 }
 
 .date-group {
@@ -176,6 +180,9 @@ body {
 	border: none;
 	border-radius: 8px;
 	width: 50%;
+	margin: 0 auto;
+	margin-top: 24px;
+	display: block;
 	font-size: 16px;
 	padding: 16px;
 	box-shadow: var(--button-shadow);
@@ -203,19 +210,30 @@ body {
 
 .itinerary-list-container {
 	font-weight: light;
-	flex: 1;
+	/* flex: 1; */
 	display: flex;
-	height: 100%;
+	height: fit-content;
+	/* max-height: 100%; */
+	padding-bottom: 24px;
+	background-color: var(--white);
+	border-radius: var(--border-radius);
+	width: 256px;
+	margin-left: 256px;
+	box-shadow: var(--shadow-5);
 }
 
 #itinerary-list-display {
-	color: var(--darker-grey);
+	color: var(--black);
 	text-align: left;
-	max-width: 384px;
+	/* min-width: 320px; */
+	width: 100%;
+	padding: 20px 20px 20px 32px;
+	/* border-radius: var(--border-radius); */
+	/* background-color: blue; */
 }
 
 #itinerary-list-title {
-	font-weight: 400;
+	font-weight: 600;
 	font-size: 32px;
 }
 
@@ -341,6 +359,7 @@ body {
 .event-description {
 	max-width: 30em;
 	line-height: 1.5em;
+	font-size: 16px;
 }
 
 .event-details-wrapper {
@@ -415,6 +434,7 @@ body {
 	/* position: relative; */
 	max-width: 384px; /*change as per your design need */
 	min-width: 384px;
+	height: fit-content;
 	background-color: var(--white);
 	color: var(--calendar-font-color);
 	/* margin: 20px auto; */
@@ -529,4 +549,39 @@ header .current-date {
 
 .days li:not(.highlight):not(.light-highlight):not(.today):hover::before {
 	background: #f2f2f2;
+}
+
+#location-search {
+	width: 312px;
+	margin-bottom: 0;
+}
+
+#map {
+	width: 100%;
+	height: 300px;
+	border-radius: var(--border-radius);
+}
+
+#search-suggestions {
+	position: relative;
+	top: 100%;
+	left: 0;
+	z-index: 10;
+	width: 312px;
+	max-height: 200px;
+	overflow-y: auto;
+	background-color: white;
+	border: 2px solid var(--light-grey);
+	border-radius: 4px;
+	border-top: none;
+	display: none;
+}
+
+#search-suggestions .search-suggestion {
+	padding: 4px;
+	cursor: pointer;
+}
+
+#search-suggestions .search-suggestion:hover {
+	background-color: #f4f4f4;
 }

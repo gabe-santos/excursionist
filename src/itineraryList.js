@@ -7,7 +7,7 @@ export const itineraryList = {};
 export const addNewItinerary = (title, id, dateStart, dateEnd, activityArr) => {
 	const newEntry = new Itinerary(title, id, dateStart, dateEnd, activityArr);
 
-	itineraryList[newEntry.key] = newEntry;
+	itineraryList[newEntry.id] = newEntry;
 
 	// Update the UI to display the newly created Itinerary
 	updateUI(itineraryList);
