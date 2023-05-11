@@ -61,9 +61,10 @@ body {
 
 /* NAVBAR */
 #navbar {
-	width: 100%;
+	max-width: 100%;
 	display: flex;
 	align-items: center;
+	margin: 12px 40px 0px 40px;
 }
 
 #spacer {
@@ -356,10 +357,19 @@ body {
 	color: var(--grey);
 }
 
-.event-description {
-	max-width: 30em;
-	line-height: 1.5em;
-	font-size: 16px;
+.event-date {
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+
+.event-activity-count {
+	margin: 0px 12px;
+	border-bottom: 1px solid var(--light-grey);
+	width: 90%;
+	color: var(--grey);
+	font-weight: 600;
+	font-size: 1rem;
+	margin-bottom: 12px;
 }
 
 .event-details-wrapper {
@@ -367,8 +377,14 @@ body {
 	width: 50vw;
 }
 
-.event-details-wrapper > p {
+.event-details-wrapper > p:nth-child(-n + 2) {
 	margin: 24px 12px;
+}
+
+.event-description {
+	max-width: 30em;
+	line-height: 1.5em;
+	font-size: 16px;
 }
 
 .event-title {
@@ -557,6 +573,7 @@ header .current-date {
 }
 
 #map {
+	margin-top: 20px;
 	width: 100%;
 	height: 300px;
 	border-radius: var(--border-radius);

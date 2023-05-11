@@ -78,14 +78,15 @@ const updateItineraryDisplay = itinerary => {
 	console.log(itinerary.dateStart, itinerary.dateEnd);
 
 	if (itinerary.dateStart.getTime() === itinerary.dateEnd.getTime())
-		eventDate.textContent = itinerary.dateStart.toLocaleDateString();
+		eventDate.textContent =
+			'🗓️ ' + itinerary.dateStart.toLocaleDateString();
 	else
 		eventDate.textContent = itinerary.dateStart
-			? itinerary.getDateRangeString()
+			? '🗓️ ' + itinerary.getDateRangeString()
 			: 'No Date';
-	eventActivityCount.textContent = `${itinerary.getActivityCount()} ${
-		itinerary.getActivityCount() === 1 ? 'activity' : 'activities'
-	}`;
+	// eventActivityCount.textContent = `${itinerary.getActivityCount()} ${
+	// 	itinerary.getActivityCount() === 1 ? 'Activity' : 'Activities'
+	// }`;
 
 	eventDescription.innerHTML = itinerary.activities
 		? itinerary.activities
