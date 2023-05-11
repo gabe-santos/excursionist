@@ -494,9 +494,7 @@ header .current-date {
 .days li.inactive {
 	color: #aaa;
 }
-.days li.active {
-	color: #fff;
-}
+
 .days li::before {
 	position: absolute;
 	content: '';
@@ -508,9 +506,27 @@ header .current-date {
 	border-radius: 50%;
 	transform: translate(-50%, -50%);
 }
-.days li.active::before {
+.days li.today::before {
+	/* background: var(--purple); */
+	border: 2px solid var(--teal);
+	/* border-radius: 8px; */
+}
+
+.days li.highlight {
+	color: var(--white);
+}
+
+.days li.highlight::before {
 	background: var(--purple);
 }
-.days li:not(.active):hover::before {
+
+.days li.light-highlight {
+}
+
+.days li.light-highlight::before {
+	background: hsla(244, 44%, 49%, 0.3);
+}
+
+.days li:not(.highlight):not(.light-highlight):not(.today):hover::before {
 	background: #f2f2f2;
 }

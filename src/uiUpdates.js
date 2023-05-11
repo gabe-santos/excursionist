@@ -7,6 +7,7 @@ import {
 } from './selectors';
 import { itineraryList } from './itineraryList';
 import { addNewItinerary } from './itineraryList';
+import { highlightDateRange } from './calendar';
 import { pencil } from './assets/Pencil';
 import { trash } from './assets/Trash';
 
@@ -90,7 +91,7 @@ const updateItineraryDisplay = itinerary => {
 				.join('')
 		: '';
 
-	console.log(itinerary.getDateRangeString());
+	highlightDateRange(itinerary.getDateRangeString());
 };
 
 export const updateUI = itineraryData => {
