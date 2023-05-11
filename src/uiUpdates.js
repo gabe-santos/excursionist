@@ -89,6 +89,8 @@ const updateItineraryDisplay = itinerary => {
 				)
 				.join('')
 		: '';
+
+	console.log(itinerary.getDateRangeString());
 };
 
 export const updateUI = itineraryData => {

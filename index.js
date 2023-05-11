@@ -11,7 +11,6 @@ import {
 } from './src/selectors';
 import { openFormModal, closeFormModal } from './src/formModal';
 import { updateUI } from './src/uiUpdates';
-import { calendarControl } from './src/calendar';
 import { itineraryList, addNewItinerary } from './src/itineraryList';
 
 // Form Modal Code
