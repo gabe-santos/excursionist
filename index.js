@@ -29,11 +29,11 @@ mapboxgl.accessToken =
 // 	zoom: 15, // starting zoom
 // });
 
-const searchInput = document.getElementById('location-search');
+const locationSearch = document.getElementById('location-search');
 const searchSuggestions = document.getElementById('search-suggestions');
 let searchResults = [];
 
-searchInput.addEventListener('input', function (event) {
+locationSearch.addEventListener('input', function (event) {
 	const searchQuery = event.target.value;
 	const geocodingEndpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
 		searchQuery
@@ -59,11 +59,17 @@ function displaySearchSuggestions() {
 		const suggestion = document.createElement('div');
 		suggestion.classList.add('search-suggestion');
 		suggestion.innerHTML = result.place_name;
-		suggestion.addEventListener('click', function () {
+		suggestion.addEventListener('click', () => {
+			// console.log(result);
 			const coordinates = result.center;
-			console.log(coordinates);
-			searchInput.innerHTML = result;
-			map.flyTo({ center: coordinates });
+			console.log(coordinates, typeof coordinates);
+			locationSearch.value = JSON.stringify(coordinates);
+			console.log(
+				JSON.stringify(coordinates),
+				typeof JSON.stringify(coordinates)
+			);
+			searchSuggestions.style.display = 'none';
+			// map.flyTo({ center: coordinates });
 		});
 		searchSuggestions.appendChild(suggestion);
 	});
@@ -71,33 +77,33 @@ function displaySearchSuggestions() {
 	searchSuggestions.style.display = 'block';
 }
 
-const map = new mapboxgl.Map({
-	container: 'map',
-	style: 'mapbox://styles/mapbox/streets-v11',
-	center: [-122.4194, 37.7749],
-	zoom: 15,
-});
+// const map = new mapboxgl.Map({
+// 	container: 'map',
+// 	style: 'mapbox://styles/mapbox/streets-v11',
+// 	center: [-122.4194, 37.7749],
+// 	zoom: 15,
+// });
 
-const marker = new mapboxgl.Marker().setLngLat([-122.4194, 37.7749]).addTo(map);
+// const marker = new mapboxgl.Marker().setLngLat([-122.4194, 37.7749]).addTo(map);
 
-searchInput.addEventListener('focus', function () {
+locationSearch.addEventListener('focus', function () {
 	displaySearchSuggestions();
 });
 
-searchInput.addEventListener('blur', function () {
-	setTimeout(() => {
-		searchSuggestions.style.display = 'none';
-	}, 100);
-});
+// searchInput.addEventListener('blur', function () {
+// 	setTimeout(() => {
+// 		searchSuggestions.style.display = 'none';
+// 	}, 100);
+// });
 
-document.addEventListener('click', function (event) {
-	if (
-		!searchInput.contains(event.target) &&
-		!searchSuggestions.contains(event.target)
-	) {
-		searchSuggestions.style.display = 'none';
-	}
-});
+// document.addEventListener('click', function (event) {
+// 	if (
+// 		!searchInput.contains(event.target) &&
+// 		!searchSuggestions.contains(event.target)
+// 	) {
+// 		searchSuggestions.style.display = 'none';
+// 	}
+// });
 
 // Form Modal Code
 // Displays popup form when '+ New Itinerary' clicked
@@ -144,7 +150,8 @@ const init = () => {
 					item.id,
 					item.dateStart,
 					item.dateEnd,
-					JSON.parse(item.activities)
+					JSON.parse(item.activities),
+					item.coordinates
 				);
 			});
 		})

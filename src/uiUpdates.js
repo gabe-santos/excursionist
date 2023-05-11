@@ -8,6 +8,7 @@ import {
 import { itineraryList } from './itineraryList';
 import { addNewItinerary } from './itineraryList';
 import { highlightDateRange } from './calendar';
+import mapboxgl, { LngLat } from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
 import { pencil } from './assets/Pencil';
 import { trash } from './assets/Trash';
 
@@ -96,6 +97,26 @@ const updateItineraryDisplay = itinerary => {
 				)
 				.join('')
 		: '';
+
+	let coordinates;
+	if (itinerary.location) {
+		coordinates = mapboxgl.LngLat.convert(JSON.parse(itinerary.location));
+	} else {
+		coordinates = new LngLat(-117.1596737, 33.1278778);
+	}
+
+	console.log(itinerary.location, typeof itinerary.location);
+	const map = new mapboxgl.Map({
+		container: 'map',
+		style: 'mapbox://styles/mapbox/streets-v11',
+		center: coordinates,
+
+		zoom: 15,
+	});
+
+	const marker = new mapboxgl.Marker({ color: 'hsl(176, 44%, 45%)' })
+		.setLngLat(coordinates)
+		.addTo(map);
 
 	highlightDateRange(itinerary.getDateRangeString());
 };

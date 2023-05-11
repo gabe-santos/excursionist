@@ -1,12 +1,13 @@
 import { generateKey } from './generateKey';
 
 export class Itinerary {
-	constructor(title, id, dateStart, dateEnd, activities) {
+	constructor(title, id, dateStart, dateEnd, activities, location) {
 		this.title = title;
 		this.id = id;
 		this.dateStart = new Date(dateStart);
 		this.dateEnd = new Date(dateEnd);
 		this.activities = activities;
+		this.location = location;
 		console.log(dateStart);
 		if (
 			Array.isArray(activities) &&

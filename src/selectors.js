@@ -21,3 +21,5 @@ export const formEventDateStart = document.querySelector('#form-date-start');
 export const formEventDateEnd = document.querySelector('#form-date-end');
 export const formActivityCount = document.querySelector('#form-activity-count');
 export const formEventDescription = document.querySelector('#form-description');
+export const formLocation = document.querySelector('#location-search');
+export const searchSuggestions = document.getElementById('search-suggestions');

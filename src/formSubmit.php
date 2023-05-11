@@ -4,6 +4,7 @@ $title = $_POST['title'];
 $start_date = $_POST['date-start'];
 $end_date = $_POST['date-end'];
 $description = $_POST['description'];
+$coordinates = $_POST['coordinates'];
 
 $activity_arr = explode("\n", $description); // Split the string into an array
 
@@ -20,7 +21,7 @@ if (!$db) {
 
 
 // Define a query to insert the data into the table
-$query = "INSERT INTO itineraries (title, dateStart, dateEnd, activities) VALUES ('$title', '$start_date', '$end_date', '$activity_json')";
+$query = "INSERT INTO itineraries (title, dateStart, dateEnd, activities, coordinates) VALUES ('$title', '$start_date', '$end_date', '$activity_json', '$coordinates')";
 
 // Execute the query
 $db->exec($query);
