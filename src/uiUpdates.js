@@ -7,6 +7,7 @@ import {
 } from './selectors';
 import { itineraryList } from './itineraryList';
 import { addNewItinerary } from './itineraryList';
+import { highlightDateRange } from './calendar';
 import { pencil } from './assets/Pencil';
 import { trash } from './assets/Trash';
 
@@ -24,7 +25,6 @@ const updateSidebar = data => {
         <div class="itinerary-list-btns">
           <button class="itinerary-list-item" id="${key}">${it.title}</button>
 
-          <button class="edit-btn">${pencil}</button>
           <button class="delete-btn">${trash}</button>
         </div>
       </div>`;
@@ -74,19 +74,34 @@ const deleteItinerary = e => {
 
 const updateItineraryDisplay = itinerary => {
 	eventTitle.textContent = itinerary.title;
-	eventDate.textContent = itinerary.dateStart
-		? itinerary.getDateRangeString()
-		: 'No Date';
-	eventActivityCount.textContent = `${itinerary.getActivityCount()} ${
-		itinerary.getActivityCount() === 1 ? 'activity' : 'activities'
-	}`;
+	console.log(itinerary.getDateRangeString());
+	console.log(itinerary.dateStart, itinerary.dateEnd);
+
+	if (itinerary.dateStart.getTime() === itinerary.dateEnd.getTime())
+		eventDate.textContent =
+			'🗓️ ' + itinerary.dateStart.toLocaleDateString();
+	else
+		eventDate.textContent = itinerary.dateStart
+			? '🗓️ ' + itinerary.getDateRangeString()
+			: 'No Date';
+	// eventActivityCount.textContent = `${itinerary.getActivityCount()} ${
+	// 	itinerary.getActivityCount() === 1 ? 'Activity' : 'Activities'
+	// }`;
 
 	eventDescription.innerHTML = itinerary.activities
-		? itinerary.activities.map(activity => `<p>${activity}</p>`).join('')
+		? itinerary.activities
+				.map(
+					activity =>
+						`<li class="itinerary-display-item">${activity}</li>`
+				)
+				.join('')
 		: '';
+
+	highlightDateRange(itinerary.getDateRangeString());
 };
 
 export const updateUI = itineraryData => {
+	console.log(itineraryData);
 	updateSidebar(itineraryData);
 
 	// Update Itinerary Display
