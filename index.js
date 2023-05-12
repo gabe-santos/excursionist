@@ -154,11 +154,11 @@ const init = () => {
 					item.coordinates
 				);
 			});
+			updateUI(itineraryList);
 		})
 		.catch(error => {
 			console.error('Error:', error); // Handle any error that occurred
 		});
-	updateUI(itineraryList);
 
 	// const today = new Date();
 	// const twoDaysFromToday = new Date(today);

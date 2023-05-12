@@ -2,14 +2,11 @@ import {
 	itineraryUl,
 	eventTitle,
 	eventDate,
-	eventActivityCount,
 	eventDescription,
 } from './selectors';
 import { itineraryList } from './itineraryList';
-import { addNewItinerary } from './itineraryList';
 import { highlightDateRange } from './calendar';
 import mapboxgl, { LngLat } from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
-import { pencil } from './assets/Pencil';
 import { trash } from './assets/Trash';
 
 const switchItineraryDisplay = e => {
@@ -73,21 +70,43 @@ const deleteItinerary = e => {
 	location.reload();
 };
 
+const updateMap = location => {
+	let coordinates;
+	if (location) {
+		coordinates = mapboxgl.LngLat.convert(JSON.parse(location));
+	} else {
+		coordinates = new LngLat(-117.1596737, 33.1278778);
+	}
+
+	const map = new mapboxgl.Map({
+		container: 'map',
+		style: 'mapbox://styles/mapbox/streets-v11',
+		center: coordinates,
+		zoom: 15,
+	});
+
+	const marker = new mapboxgl.Marker({ color: 'hsl(176, 44%, 45%)' })
+		.setLngLat(coordinates)
+		.addTo(map);
+};
+
 const updateItineraryDisplay = itinerary => {
 	eventTitle.textContent = itinerary.title;
 	console.log(itinerary.getDateRangeString());
 	console.log(itinerary.dateStart, itinerary.dateEnd);
 
-	if (itinerary.dateStart.getTime() === itinerary.dateEnd.getTime())
+	if (
+		itinerary.dateStart &&
+		itinerary.dateStart.getTime() === itinerary.dateEnd.getTime()
+	) {
 		eventDate.textContent =
 			'🗓️ ' + itinerary.dateStart.toLocaleDateString();
-	else
-		eventDate.textContent = itinerary.dateStart
-			? '🗓️ ' + itinerary.getDateRangeString()
-			: 'No Date';
-	// eventActivityCount.textContent = `${itinerary.getActivityCount()} ${
-	// 	itinerary.getActivityCount() === 1 ? 'Activity' : 'Activities'
-	// }`;
+	} else {
+		eventDate.textContent =
+			itinerary.dateStart != 'Invalid Date'
+				? '🗓️ ' + itinerary.getDateRangeString()
+				: '';
+	}
 
 	eventDescription.innerHTML = itinerary.activities
 		? itinerary.activities
@@ -98,26 +117,8 @@ const updateItineraryDisplay = itinerary => {
 				.join('')
 		: '';
 
-	let coordinates;
-	if (itinerary.location) {
-		coordinates = mapboxgl.LngLat.convert(JSON.parse(itinerary.location));
-	} else {
-		coordinates = new LngLat(-117.1596737, 33.1278778);
-	}
-
-	console.log(itinerary.location, typeof itinerary.location);
-	const map = new mapboxgl.Map({
-		container: 'map',
-		style: 'mapbox://styles/mapbox/streets-v11',
-		center: coordinates,
-
-		zoom: 15,
-	});
-
-	const marker = new mapboxgl.Marker({ color: 'hsl(176, 44%, 45%)' })
-		.setLngLat(coordinates)
-		.addTo(map);
-
+	updateMap(itinerary.location);
+	console.log(itinerary.getDateRangeString());
 	highlightDateRange(itinerary.getDateRangeString());
 };
 

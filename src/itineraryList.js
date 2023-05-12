@@ -24,7 +24,7 @@ export const addNewItinerary = (
 	itineraryList[newEntry.id] = newEntry;
 
 	// Update the UI to display the newly created Itinerary
-	updateUI(itineraryList);
+	// updateUI(itineraryList);
 
 	closeFormModal();
 };

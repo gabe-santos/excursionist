@@ -8,7 +8,11 @@ export class Itinerary {
 		this.dateEnd = new Date(dateEnd);
 		this.activities = activities;
 		this.location = location;
-		console.log(dateStart);
+
+		// Handle weird day error
+		this.dateStart.setDate(this.dateStart.getDate() + 1);
+		this.dateEnd.setDate(this.dateEnd.getDate() + 1);
+
 		if (
 			Array.isArray(activities) &&
 			activities.every(item => typeof item === 'string')
