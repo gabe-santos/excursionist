@@ -159,10 +159,6 @@ const init = () => {
 		.catch(error => {
 			console.error('Error:', error); // Handle any error that occurred
 		});
-
-	// const today = new Date();
-	// const twoDaysFromToday = new Date(today);
-	// twoDaysFromToday.setDate(today.getDate() + 2);
 };
 
 addEventListener('load', init); // run init on page load

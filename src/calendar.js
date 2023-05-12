@@ -1,3 +1,5 @@
+import { render } from 'less';
+
 const daysTag = document.querySelector('.days'),
 	currentDate = document.querySelector('.current-date'),
 	prevNextIcon = document.querySelectorAll('.icons span');
@@ -73,12 +75,15 @@ export const highlightDateRange = dateRangeToHighlight => {
 	const [startStr, endStr] = dateRangeToHighlight.split(' to ');
 	const startDate = new Date(startStr);
 	const endDate = new Date(endStr);
+	const highlightMonth = startDate.getMonth();
+
+	renderCalendar(startDate.getFullYear(), highlightMonth);
 
 	const allDates = document.querySelectorAll('.days li');
 	allDates.forEach(date => {
 		date.classList.remove('highlight', 'light-highlight'); // remove both classes
 		if (date.innerText !== '' && !date.classList.contains('inactive')) {
-			const currDate = new Date(currYear, currMonth, date.innerText);
+			const currDate = new Date(currYear, highlightMonth, date.innerText);
 			if (
 				currDate.getTime() === startDate.getTime() ||
 				currDate.getTime() === endDate.getTime()
