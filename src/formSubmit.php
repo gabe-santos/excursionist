@@ -19,14 +19,19 @@ if (!$db) {
     exit();
 }
 
+// Define a prepared statement to insert the data into the table
+$stmt = $db->prepare('INSERT INTO itineraries (title, dateStart, dateEnd, activities, coordinates) VALUES (:title, :start_date, :end_date, :activity_json, :coordinates)');
+$stmt->bindValue(':title', $title, SQLITE3_TEXT);
+$stmt->bindValue(':start_date', $start_date, SQLITE3_TEXT);
+$stmt->bindValue(':end_date', $end_date, SQLITE3_TEXT);
+$stmt->bindValue(':activity_json', $activity_json, SQLITE3_TEXT);
+$stmt->bindValue(':coordinates', $coordinates, SQLITE3_TEXT);
 
-// Define a query to insert the data into the table
-$query = "INSERT INTO itineraries (title, dateStart, dateEnd, activities, coordinates) VALUES ('$title', '$start_date', '$end_date', '$activity_json', '$coordinates')";
+// Execute the prepared statement
+$result = $stmt->execute();
 
-// Execute the query
-$db->exec($query);
-
-// Close the database connection
+// Close the prepared statement and the database connection
+$stmt->close();
 $db->close();
 
 // Redirect back to the form page
