@@ -23,7 +23,7 @@
     <div id="navbar">
       <h1 class="logo">Excursionist</h1>
       <p id="spacer"></p>
-      <p id="account-nav">Account</p>
+      <!-- <p id="account-nav">Account</p> -->
     </div>
 
     <!-- App container -->
@@ -42,41 +42,28 @@
       <!-- New Itinerary Modal Form -->
       <div class="modal">
         <div class="modal-window">
-          <div class="form-header">
-            <h1>New Itinerary</h1>
+          <div class="form-close-btn-line">
             <p class="spacer"></p>
             <span class="close-btn">&times;</span>
           </div>
+          <div class="form-header">
+            <h1>New Itinerary</h1>
+          </div>
           <form id="modal-form" action="http://localhost:8888/src/formSubmit.php" method="POST">
             <div class="form-content">
-              <div class="input-group">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="form-title" required />
-              </div>
+              <input type="text" name="title" id="form-title" required placeholder="Title" />
 
               <div class="date-group">
-                <div class="input-group">
-                  <label for="date-start" required>Start</label>
-                  <input type="date" name="date-start" id="form-date-start" />
-                </div>
-
-                <div class="input-group">
-                  <label for="date-end" required>End</label>
-                  <input type="date" name="date-end" id="form-date-end" />
-                </div>
+                <input type="date" name="date-start" id="form-date-start" />
+                <p id="to"> to </p>
+                <input type="date" name="date-end" id="form-date-end" />
               </div>
 
+              <textarea name="description" id="form-description" rows="10"
+                placeholder="Activities... (separate by new line)"></textarea>
 
-              <div class="input-group">
-                <label for="description">Description</label>
-                <textarea name="description" id="form-description" cols="30" rows="10"></textarea>
-              </div>
-
-              <div class="input-group" id="location-input-group">
-                <input type="text" id="location-search" placeholder="Location" name="coordinates">
-                <div id="search-suggestions"></div>
-              </div>
-
+              <input type="text" id="location-search" placeholder="Location" name="coordinates">
+              <div id="search-suggestions"></div>
             </div>
 
             <button type="submit" class="submit-btn" id="form-submit">
