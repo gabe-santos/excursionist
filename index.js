@@ -1,33 +1,15 @@
-import {
-	newItineraryBtn,
-	form,
-	formModal,
-	formModalClose,
-	formModalSubmit,
-	formEventTitle,
-	formEventDateStart,
-	formEventDateEnd,
-	formEventDescription,
-} from './src/selectors';
+import { newItineraryBtn, formModal, formModalClose } from './src/selectors';
 import { openFormModal, closeFormModal } from './src/formModal';
 import { updateUI } from './src/uiUpdates';
 import { itineraryList, addNewItinerary } from './src/itineraryList';
 
 import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
-import { autofill } from '@mapbox/search-js-web';
 
 const mapbox_accessToken =
 	'pk.eyJ1IjoiZ3NhbnRvczI4IiwiYSI6ImNsaGoydmU2ZTBkb2QzZGxnZWVlbTc0OGwifQ.x78syQk1RUYpa0DtFj4kRA';
 
 mapboxgl.accessToken =
 	'pk.eyJ1IjoiZ3NhbnRvczI4IiwiYSI6ImNsaGoydmU2ZTBkb2QzZGxnZWVlbTc0OGwifQ.x78syQk1RUYpa0DtFj4kRA';
-
-// const map = new mapboxgl.Map({
-// 	container: 'map', // container ID
-// 	style: 'mapbox://styles/mapbox/streets-v12', // style URL
-// 	center: [-117.1596737, 33.1278778], // starting position [lng, lat]
-// 	zoom: 15, // starting zoom
-// });
 
 const locationSearch = document.getElementById('location-search');
 const searchSuggestions = document.getElementById('search-suggestions');
@@ -60,7 +42,6 @@ function displaySearchSuggestions() {
 		suggestion.classList.add('search-suggestion');
 		suggestion.innerHTML = result.place_name;
 		suggestion.addEventListener('click', () => {
-			// console.log(result);
 			const coordinates = result.center;
 			console.log(coordinates, typeof coordinates);
 			locationSearch.value = JSON.stringify(coordinates);
@@ -69,7 +50,6 @@ function displaySearchSuggestions() {
 				typeof JSON.stringify(coordinates)
 			);
 			searchSuggestions.style.display = 'none';
-			// map.flyTo({ center: coordinates });
 		});
 		searchSuggestions.appendChild(suggestion);
 	});
@@ -77,33 +57,9 @@ function displaySearchSuggestions() {
 	searchSuggestions.style.display = 'block';
 }
 
-// const map = new mapboxgl.Map({
-// 	container: 'map',
-// 	style: 'mapbox://styles/mapbox/streets-v11',
-// 	center: [-122.4194, 37.7749],
-// 	zoom: 15,
-// });
-
-// const marker = new mapboxgl.Marker().setLngLat([-122.4194, 37.7749]).addTo(map);
-
 locationSearch.addEventListener('focus', function () {
 	displaySearchSuggestions();
 });
-
-// searchInput.addEventListener('blur', function () {
-// 	setTimeout(() => {
-// 		searchSuggestions.style.display = 'none';
-// 	}, 100);
-// });
-
-// document.addEventListener('click', function (event) {
-// 	if (
-// 		!searchInput.contains(event.target) &&
-// 		!searchSuggestions.contains(event.target)
-// 	) {
-// 		searchSuggestions.style.display = 'none';
-// 	}
-// });
 
 // Form Modal Code
 // Displays popup form when '+ New Itinerary' clicked
@@ -115,29 +71,6 @@ formModalClose.onclick = closeFormModal;
 window.onclick = e => {
 	if (e.target == formModal) closeFormModal();
 };
-
-// form.addEventListener('submit', e => {
-// 	e.preventDefault();
-// 	// Get values of input fields
-// 	const title = formEventTitle.value;
-// 	const dateStart = formEventDateStart.value;
-// 	const dateEnd = formEventDateEnd.value;
-// 	const description = formEventDescription.value;
-
-// 	// Check if required inputs are filled
-// 	if (
-// 		title.trim() === '' ||
-// 		dateStart.trim() === '' ||
-// 		dateEnd.trim() === '' ||
-// 		description.trim() === ''
-// 	) {
-// 		alert('Please fill all required fields.');
-// 		return;
-// 	}
-
-// 	// Call the function to add new itinerary
-// 	addNewItinerary(title, dateStart, dateEnd, description);
-// });
 
 const init = () => {
 	fetch('http://localhost:3001/data')

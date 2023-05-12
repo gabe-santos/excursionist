@@ -139,7 +139,7 @@ body {
 
 #modal-form {
 	width: 100%;
-	background-color: green;
+	/* background-color: green; */
 }
 
 .form-content {
@@ -623,4 +623,12 @@ header .current-date {
 
 #search-suggestions .search-suggestion:hover {
 	background-color: var(--lighter-grey);
+}
+
+#faq-btn {
+	border: none;
+}
+
+#faq-btn:hover {
+	cursor: pointer;
 }

@@ -1,0 +1,48 @@
+/* FAQ */
+
+#FAQ-Header {
+	display: flex;
+	justify-content: center;
+}
+
+#FAQ-title {
+	display: flex;
+	justify-content: center;
+	font-size: 16px;
+	color: var(--purple);
+	font-weight: bold;
+}
+
+.FAQ-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.FAQ-listbox {
+	list-style: none;
+	background-color: var(--light-grey);
+}
+
+.FAQ-listbox li {
+	color: var(--mint);
+	font-size: 30px;
+}
+
+.FAQ-answer {
+	color: var(--purple);
+	font-size: 18px;
+	margin-left: 24px;
+}
+
+.answer-image-container {
+	display: flex;
+}
+
+.answer-image {
+	max-width: 25%;
+	margin-bottom: 40px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
