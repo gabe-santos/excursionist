@@ -3,12 +3,6 @@ const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const { exec } = require('child_process');
 
-// async function startPHPServer() {
-// 	const phpServer = await import('php-server');
-// 	const server = await phpServer();
-// 	console.log(`PHP server running at ${server.url}`);
-// }
-
 const app = express();
 const port = 3001;
 
@@ -105,7 +99,3 @@ app.post('/data', (req, res) => {
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
 });
-
-// startPHPServer().catch(error => {
-// 	console.error('Error starting PHP server:', error);
-// });

@@ -1,5 +1,3 @@
-import { generateKey } from './generateKey';
-
 export class Itinerary {
 	constructor(title, id, dateStart, dateEnd, activities, location) {
 		this.title = title;

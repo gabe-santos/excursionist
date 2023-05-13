@@ -6,7 +6,7 @@ import {
 } from './selectors';
 import { itineraryList } from './itineraryList';
 import { highlightDateRange } from './calendar';
-import mapboxgl, { LngLat } from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
+import mapboxgl, { LngLat } from 'mapbox-gl';
 import { trash } from './assets/Trash';
 
 const switchItineraryDisplay = e => {
