@@ -1,7 +1,8 @@
 # Excursionist
 
 
-https://github.com/gabe-santos/excursionist/assets/34319104/3e89dbc4-e11a-4fdb-bc64-21741f7c0529
+![CleanShot 2023-05-16 at 17 27 37](https://github.com/gabe-santos/excursionist/assets/34319104/89f1faa3-fccb-4dfc-bcc8-cb1e98e0d826)
+
 
 
 
